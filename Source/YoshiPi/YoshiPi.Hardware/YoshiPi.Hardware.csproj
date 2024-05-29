@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+      <TargetFramework>net8.0</TargetFramework>
+      <Nullable>enable</Nullable>
+      <LangVersion>10</LangVersion>
+  </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Meadow.Foundation.ICs.ADCs.Mcp3xxx" Version="1.12.0" />
+        <PackageReference Include="Meadow.Foundation.ICs.IOExpanders.Mcp23xxx" Version="1.12.0" />
+        <PackageReference Include="Meadow.Linux" Version="1.12.0" />
+    </ItemGroup>
+
+</Project>

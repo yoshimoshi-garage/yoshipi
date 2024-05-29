@@ -5,6 +5,21 @@ VisualStudioVersion = 17.9.34714.143
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValidationApp", "..\ValidationApp\ValidationApp.csproj", "{757E13E6-0291-4A4C-9414-52899DB85B4D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{142C341D-4DB9-4643-8EAF-21F35A3AB47F}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Docs\booting-your-pi.md = ..\..\Docs\booting-your-pi.md
+		..\..\Docs\create-an-sd-card.md = ..\..\Docs\create-an-sd-card.md
+		..\..\Docs\getting-started.md = ..\..\Docs\getting-started.md
+		..\..\Docs\installing-prereqs.md = ..\..\Docs\installing-prereqs.md
+		..\..\README.md = ..\..\README.md
+		..\..\Docs\troubleshooting.md = ..\..\Docs\troubleshooting.md
+		..\..\Docs\v1a-known-issues.md = ..\..\Docs\v1a-known-issues.md
+		..\..\Docs\v1a-validation.md = ..\..\Docs\v1a-validation.md
+		..\..\Docs\v1b-checklist.md = ..\..\Docs\v1b-checklist.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YoshiPi.Hardware", "YoshiPi.Hardware\YoshiPi.Hardware.csproj", "{F2AF15A6-4EF6-45B1-9E5C-F40E53D02510}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +30,10 @@ Global
 		{757E13E6-0291-4A4C-9414-52899DB85B4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{757E13E6-0291-4A4C-9414-52899DB85B4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{757E13E6-0291-4A4C-9414-52899DB85B4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2AF15A6-4EF6-45B1-9E5C-F40E53D02510}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2AF15A6-4EF6-45B1-9E5C-F40E53D02510}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2AF15A6-4EF6-45B1-9E5C-F40E53D02510}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2AF15A6-4EF6-45B1-9E5C-F40E53D02510}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

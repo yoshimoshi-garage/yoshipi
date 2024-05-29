@@ -14,6 +14,13 @@ First boot will take a while (~2 minutes).  The device will generate SSH keys, r
 
 At this point, if you assigned a hostname to the device during OS setup, from any PC on your network you should be able to ping the device.
 
+```
+> ping -4 yoshipi.local
+
+Pinging yoshipi.local [192.168.4.69] with 32 bytes of data:
+Reply from 192.168.4.69: bytes=32 time=3ms TTL=64
+```
+
 now, from a terminal on a dev PC, SSH into your Raspberry Pi Zero 2 W.
 
 ```
@@ -33,4 +40,3 @@ Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
 permitted by applicable law.
 pi@yoshipi:~ $
 ```
-
