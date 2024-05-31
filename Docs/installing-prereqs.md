@@ -84,3 +84,19 @@ Enable I2C
 [](raspi-config-06.png)
 [](raspi-config-07.png)
 [](raspi-config-08.png)
+
+Enable SPI1
+
+```
+$ sudo nano /boot/firmware/config.txt
+```
+
+Navigate to the bottom and add 
+```
+dtoverlay=spi0-1cs,cs0_pin=44`
+dtoverlay=spi1-1cs,cs0_pin=45`
+```
+
+```
+$ sudo reboot
+```

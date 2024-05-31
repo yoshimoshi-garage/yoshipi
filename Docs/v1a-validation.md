@@ -6,17 +6,18 @@
 - [X] 5.0V
 - [X] Relay 1
 - [X] Relay 2
-- [ ] Button 1
-- [ ] Button 2
-- [X] MCP3008
+- [X] Button 1
+- [X] Button 2
+- [ ] MCP3004 : FAIL, CS isn't going low
+- [X] MCP23008
 - [X] GPIO
   - [X] D00
   - [X] D01
   - [X] D02
   - [X] D03
 - [ ] Proto Pins
-  - [ ] 3.3
-  - [ ] GND
+  - [X] 3.3
+  - [X] GND
   - [ ] SCL
   - [ ] SDA
 - [ ] DS3231 Pins
@@ -35,6 +36,8 @@
   - [ ] SCL
   - [ ] SDA
 - [ ] Mikrobus
+- [ ] Display
+- [ ] Touchpanel
 
 ## Software Validation
 
@@ -42,20 +45,29 @@
 - [X] Relay 2
 - [ ] Button 1
 - [ ] Button 2
-- [ ] GPIO Outputs
-  - [ ] D00 : FAIL, yields `Failed to request line`.  `pinctrl set 7 dl` however can set the state?
+- [X] GPIO Outputs
+  - [X] D00
   - [X] D01
   - [X] D02
   - [X] D03
-- [ ] GPIO Inputs
-  - [ ] D00 : FAIL, yields `Failed to request line`.
+- [X] GPIO Inputs
+  - [X] D00
   - [X] D01
   - [X] D02
   - [X] D03
-- [ ] GPIO Interrupts
-  - [ ] D00 : FAIL, yields `Failed to request line`.
+- [X] GPIO Interrupts
+  - [X] D00
   - [X] D01
   - [X] D02
   - [X] D03
-- [ ] RTC
+- [X] RTC
+- [ ] ADCs
+  - [ ] A00
+  - [ ] A01
+  - [ ] A02
+  - [ ] A03
+- [X] Display
+  - [X] Display
+  - [X] Backlight
+- [ ] Touchpanel
 
