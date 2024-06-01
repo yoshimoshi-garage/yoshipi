@@ -106,7 +106,7 @@ public class YoshiPi_v1a : IYoshiPiHardware
                 _device.Pins.GPIO20,
                 _device.Pins.GPIO19,
                 new Frequency(2.34, Frequency.UnitType.Megahertz)),
-            _device.Pins.GPIO25.CreateDigitalOutputPort(true));
+            _device.Pins.Pin24.CreateDigitalOutputPort(true));
 
         _gpio = new GpioConnector(
             "GPIO",

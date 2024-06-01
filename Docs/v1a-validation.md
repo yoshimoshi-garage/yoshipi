@@ -8,7 +8,7 @@
 - [X] Relay 2
 - [X] Button 1
 - [X] Button 2
-- [ ] MCP3004 : FAIL, CS isn't going low
+- [X] MCP3004
 - [X] MCP23008
 - [X] GPIO
   - [X] D00
@@ -36,6 +36,14 @@
   - [ ] SCL
   - [ ] SDA
 - [ ] Mikrobus
+  - [ ] PWM
+  - [ ] I2C
+  - [ ] SPI
+  - [ ] UART
+  - [X] AN
+  - [ ] RST
+  - [ ] CS
+  - [ ] INT
 - [ ] Display
 - [ ] Touchpanel
 
@@ -43,8 +51,8 @@
 
 - [X] Relay 1
 - [X] Relay 2
-- [ ] Button 1
-- [ ] Button 2
+- [ ] Button 1 Bug in MF driver.  re-test after next release
+- [ ] Button 2 Bug in MF driver.  re-test after next release
 - [X] GPIO Outputs
   - [X] D00
   - [X] D01
@@ -61,7 +69,7 @@
   - [X] D02
   - [X] D03
 - [X] RTC
-- [ ] ADCs
+- [ ] ADCs Bug in MF driver.  re-test after next release
   - [ ] A00
   - [ ] A01
   - [ ] A02
@@ -70,4 +78,10 @@
   - [X] Display
   - [X] Backlight
 - [ ] Touchpanel
+- [ ] Mikrobus
+  - [ ] PWM
+  - [ ] I2C
+  - [ ] SPI
+  - [ ] UART
+  - [X] AN
 

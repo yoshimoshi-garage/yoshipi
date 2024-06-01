@@ -43,14 +43,19 @@ public class MeadowApp : App<RaspberryPi>
 
     private async Task TestADCs()
     {
-        var a0 = _hardware.Adc.Pins.A00.CreateAnalogInputPort();
-        a0.StartUpdating();
-
+        var ch0 = _hardware.Adc.Pins.A00.CreateAnalogInputPort();
+        var ch1 = _hardware.Adc.Pins.A01.CreateAnalogInputPort();
+        var ch2 = _hardware.Adc.Pins.A02.CreateAnalogInputPort();
+        var ch3 = _hardware.Adc.Pins.A03.CreateAnalogInputPort();
         while (true)
         {
-            Resolver.Log.Info($"A00: {a0.Voltage:N2} V");
+            Resolver.Log.Info($"--------");
+            Resolver.Log.Info($"Read A00: {ch0.Voltage:N2} V");
+            Resolver.Log.Info($"Read A01: {ch1.Voltage:N2} V");
+            Resolver.Log.Info($"Read A02: {ch2.Voltage:N2} V");
+            Resolver.Log.Info($"Read A03: {ch3.Voltage:N2} V");
 
-            await Task.Delay(1000);
+            Thread.Sleep(2000);
         }
     }
 

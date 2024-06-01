@@ -1,6 +1,7 @@
 # YoshiPi Checklist for v1b Layout Updates
 
 - [ ] Update Display footpint for correct headers
+- [ ] Add space above the display to give proto area some room
 - [ ] Remove display holes
 - [ ] Add corner holes
 - [ ] Move Qwiic connector to edge

@@ -10,9 +10,10 @@ YoshiPi is enabled by Wilderness Labs Meadow software Platform.
 
 - Designed for Raspberry Pi Zero 2 W
 - Serial (SPI) TFT display with a resistive touchscreen
-- 4 channels of A/D
-- 9-ish channels of GPIO 9exactly how many depends on how you configure things)
+- 4 channels of 10-bit A/D
+- 9-ish channels of GPIO (exactly how many depends on how you configure things)
 - 2 Dry Contact Relays
+- 1 PWM (hardware capable, still needs a driver)
 - 1 Mikrobus periperhal header
 - 1 Grove I2C header
 - 1 Qwiic I2C header
