@@ -7,7 +7,7 @@
 - [ ] Move Qwiic connector to edge
 - [ ] Move Grove connector inboard
 - [ ] Larger resistor footprint
-- [ ] Add header for touch GPIO access
+- [ ] Add header for touch GPIO access (IRQ, CS to D04/D05)
 - [ ] Add silkscreen labels to the MCPs and Relay
 - [ ] Remove silkscreen labels for SD (or label N/C)
 - [ ] connect extra button terminals for redundancy

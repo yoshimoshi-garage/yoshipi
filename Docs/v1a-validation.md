@@ -25,11 +25,11 @@
   - [ ] GND
   - [ ] SCL
   - [ ] SDA
-- [ ] Grove I2C
-  - [ ] 3.3
-  - [ ] GND
-  - [ ] SCL
-  - [ ] SDA
+- [X] Grove I2C
+  - [X] 3.3
+  - [X] GND
+  - [X] SCL
+  - [X] SDA
 - [ ] Qwiic
   - [ ] 3.3
   - [ ] GND
@@ -37,7 +37,7 @@
   - [ ] SDA
 - [ ] Mikrobus
   - [ ] PWM
-  - [ ] I2C
+  - [X] I2C
   - [ ] SPI
   - [ ] UART
   - [X] AN
@@ -80,8 +80,9 @@
 - [ ] Touchpanel
 - [ ] Mikrobus
   - [ ] PWM
-  - [ ] I2C
+  - [X] I2C
   - [ ] SPI
   - [ ] UART
   - [X] AN
+- [X] GroveI2c
 

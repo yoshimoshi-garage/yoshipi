@@ -19,6 +19,7 @@ public class YoshiPi_v1a : IYoshiPiHardware
     private readonly Mcp3004 _mcp3004;
     private readonly GpioConnector _gpio;
     private readonly AdcConnector _adc;
+    private readonly MikroBusConnector _mikrobus;
     private IRelay? _relay1;
     private Relay _relay2;
     private IButton? _button1;
@@ -29,6 +30,8 @@ public class YoshiPi_v1a : IYoshiPiHardware
 
     public GpioConnector Gpio => _gpio;
     public AdcConnector Adc => _adc;
+    public II2cBus GroveI2c => _device.CreateI2cBus();
+    public MikroBusConnector MikroBus => _mikrobus;
 
     public IRelay Relay1 => _relay1 ??= new Relay(_device.Pins.GPIO16.CreateDigitalOutputPort(false));
     public IRelay Relay2 => _relay2 ??= new Relay(_mcp23008.Pins.GP3.CreateDigitalOutputPort(false));
@@ -128,7 +131,27 @@ public class YoshiPi_v1a : IYoshiPiHardware
                 new PinMapping.PinAlias(AdcConnector.PinNames.A03, _mcp3004.Pins.CH3),
             });
 
-
+        _mikrobus = new MikroBusConnector(
+            "MIKROBUS1",
+            new PinMapping
+            {
+                new PinMapping.PinAlias(MikroBusConnector.PinNames.AN, _mcp3004.Pins.CH3),
+                new PinMapping.PinAlias(MikroBusConnector.PinNames.RST, device.Pins.GPIO22),
+                new PinMapping.PinAlias(MikroBusConnector.PinNames.CS, device.Pins.GPIO25),
+                new PinMapping.PinAlias(MikroBusConnector.PinNames.SCK, device.Pins.GPIO21),
+                new PinMapping.PinAlias(MikroBusConnector.PinNames.CIPO, device.Pins.GPIO19),
+                new PinMapping.PinAlias(MikroBusConnector.PinNames.COPI, device.Pins.GPIO20),
+                new PinMapping.PinAlias(MikroBusConnector.PinNames.PWM, device.Pins.GPIO12),
+                new PinMapping.PinAlias(MikroBusConnector.PinNames.INT, device.Pins.GPIO27),
+                new PinMapping.PinAlias(MikroBusConnector.PinNames.RX, device.Pins.GPIO15),
+                new PinMapping.PinAlias(MikroBusConnector.PinNames.TX, device.Pins.GPIO14),
+                new PinMapping.PinAlias(MikroBusConnector.PinNames.SCL, device.Pins.I2C1_SCL),
+                new PinMapping.PinAlias(MikroBusConnector.PinNames.SDA, device.Pins.I2C1_SDA),
+            },
+            device.PlatformOS.GetSerialPortName("serial0")!,
+            new I2cBusMapping(device, 1),
+            new SpiBusMapping(device, device.Pins.SPI1_SCLK, device.Pins.SPI1_MOSI, device.Pins.SPI1_MISO)
+            );
     }
 
 }

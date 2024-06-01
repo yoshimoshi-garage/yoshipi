@@ -64,28 +64,38 @@ $ dotnet --version
 8.0.301
 ```
 
-# Enable Hardware Things
+## Enable Hardware Things
 
 Now you have to enable access to things like the hardware busses and GPIO
 
 ```
 $ sudo raspi-config
 ```
-Enable SPI
 
-[](raspi-config-01.png)
-[](raspi-config-02.png)
-[](raspi-config-03.png)
-[](raspi-config-04.png)
+### Enable SPI0
 
-Enable I2C
+![](Assets/raspi-config-01.png)
+![](Assets/raspi-config-02.png)
+![](Assets/raspi-config-03.png)
+![](Assets/raspi-config-04.png)
 
-[](raspi-config-05.png)
-[](raspi-config-06.png)
-[](raspi-config-07.png)
-[](raspi-config-08.png)
+### Enable I2C
 
-Enable SPI1
+![](Assets/raspi-config-05.png)
+![](Assets/raspi-config-06.png)
+![](Assets/raspi-config-07.png)
+![](Assets/raspi-config-08.png)
+
+### Enable Serial Port
+
+![](Assets/raspi-config-09.png)
+![](Assets/raspi-config-10.png)
+![](Assets/raspi-config-11.png)
+![](Assets/raspi-config-12.png)
+
+### Enable SPI1
+
+Enabling the second SPI port (`SPI1`) requires directly modifying the device config file.
 
 ```
 $ sudo nano /boot/firmware/config.txt
@@ -96,6 +106,8 @@ Navigate to the bottom and add
 dtoverlay=spi0-1cs,cs0_pin=44`
 dtoverlay=spi1-1cs,cs0_pin=45`
 ```
+
+Many of these changes will not take effect until after a reboot.
 
 ```
 $ sudo reboot

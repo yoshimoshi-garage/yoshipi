@@ -1,5 +1,7 @@
 ﻿using Meadow;
 using Meadow.Foundation.Graphics;
+using Meadow.Foundation.mikroBUS.Sensors.Gnss;
+using Meadow.Foundation.Sensors.Atmospheric;
 using Meadow.Hardware;
 using System;
 using System.Threading;
@@ -18,7 +20,7 @@ public class MeadowApp : App<RaspberryPi>
 
         _hardware = YoshiPiHardware.Create(Device);
 
-        TestDisplay();
+        //TestDisplay();
 
         return Task.CompletedTask;
     }
@@ -27,8 +29,63 @@ public class MeadowApp : App<RaspberryPi>
     {
         Resolver.Log.Info("Run...");
 
+        await TestMikrobusUartLoopback();
+
         //await TestGpioOutputs();
         //        await TestADCs();
+    }
+
+    private async Task TestMikrobusUartLoopback()
+    {
+        var port = _hardware.MikroBus.CreateSerialPort();
+        port.Open();
+
+        var tx = new byte[10];
+        var rx = new byte[10];
+
+        while (true)
+        {
+            Random.Shared.NextBytes(tx);
+
+            port.Write(tx);
+            await Task.Delay(100);
+            Resolver.Log.Info($"Available: {port.BytesToRead}");
+            var r = port.Read(rx, 0, rx.Length);
+            Resolver.Log.Info($"Read: {r}");
+
+            Resolver.Log.Info($"{BitConverter.ToString(tx)} --> {BitConverter.ToString(rx)}");
+
+            await Task.Delay(2000);
+        }
+    }
+
+    private async Task TestGroveI2C_BH1900()
+    {
+        var sensor = new Bh1900Nux(
+            _hardware.GroveI2c, Bh1900Nux.Addresses.Default);
+
+        while (true)
+        {
+            var temp = await sensor.Read();
+
+            Resolver.Log.Info($"Temp: {temp.Fahrenheit:N1} F");
+
+            await Task.Delay(1000);
+        }
+    }
+
+    private async Task TestMikrobusSpi_Gnss10()
+    {
+        Resolver.Log.Info($"GNSS over SPI");
+
+        var sensor = new CGNSS10(
+            _hardware.MikroBus.SpiBus,
+            _hardware.MikroBus.Pins.CS,
+            _hardware.MikroBus.Pins.RST);
+
+        await sensor.Reset();
+        sensor.StartUpdating();
+        sensor.GgaReceived += (s, e) => { Resolver.Log.Info($"GGA"); };
     }
 
     private void TestDisplay()

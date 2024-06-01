@@ -17,7 +17,7 @@ YoshiPi is enabled by Wilderness Labs Meadow software Platform.
 - 1 Mikrobus periperhal header
 - 1 Grove I2C header
 - 1 Qwiic I2C header
-- Prototype area for soldering on thing that suck with a cable (like accelerometers, etc)
+- Prototype area for soldering on things that suck with a cable (like accelerometers, etc)
 
 ## Getting Hardware
 
