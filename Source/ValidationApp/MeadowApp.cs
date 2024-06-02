@@ -29,7 +29,7 @@ public class MeadowApp : App<RaspberryPi>
     {
         Resolver.Log.Info("Run...");
 
-        await TestMikrobusUartLoopback();
+        await TestMikrobusGpioOutputs();
 
         //await TestGpioOutputs();
         //        await TestADCs();
@@ -171,6 +171,25 @@ public class MeadowApp : App<RaspberryPi>
             Resolver.Log.Info($"GP6: {gp6.State}");
 
             Thread.Sleep(1000);
+        }
+    }
+
+    private async Task TestMikrobusGpioOutputs()
+    {
+        var d0 = _hardware.MikroBus.Pins.INT.CreateDigitalOutputPort(false);
+        var d1 = _hardware.MikroBus.Pins.PWM.CreateDigitalOutputPort(false);
+        var d2 = _hardware.MikroBus.Pins.RST.CreateDigitalOutputPort(false);
+        var d3 = _hardware.MikroBus.Pins.CS.CreateDigitalOutputPort(false);
+
+        while (true)
+        {
+
+            d0.State = !d0.State;
+            d1.State = !d1.State;
+            d2.State = !d2.State;
+            d3.State = !d3.State;
+
+            await Task.Delay(1000);
         }
     }
 
