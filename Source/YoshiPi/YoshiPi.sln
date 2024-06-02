@@ -16,9 +16,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{142C341D-4
 		..\..\Docs\v1a-known-issues.md = ..\..\Docs\v1a-known-issues.md
 		..\..\Docs\v1a-validation.md = ..\..\Docs\v1a-validation.md
 		..\..\Docs\v1b-checklist.md = ..\..\Docs\v1b-checklist.md
+		..\..\Hardware\v1b\v1b-BOM.md = ..\..\Hardware\v1b\v1b-BOM.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YoshiPi.Hardware", "YoshiPi.Hardware\YoshiPi.Hardware.csproj", "{F2AF15A6-4EF6-45B1-9E5C-F40E53D02510}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YoshiPi.Hardware", "YoshiPi.Hardware\YoshiPi.Hardware.csproj", "{F2AF15A6-4EF6-45B1-9E5C-F40E53D02510}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
