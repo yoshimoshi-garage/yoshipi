@@ -4,6 +4,8 @@ YoshiPi is a combination of a carrier board and software to enable .NET develope
 
 YoshiPi is enabled by Wilderness Labs Meadow software Platform.
 
+![](Docs/Assets/yoshipi_v1b_1.jpg)
+
 ## Features
 
 [Insert image here]
@@ -23,7 +25,7 @@ YoshiPi is enabled by Wilderness Labs Meadow software Platform.
 
 Current Hardware Version: **v1a**
 
-- [Schematic](Hardware/v1a/Schematic_YoshiPi_v1a.pdf)
+- [Schematic](Hardware/v1b/Schematic_YoshiPi_v1b.pdf)
 - [Validation Checklist](Docs/v1a-validation.md)
 - [Known Issues](Docs/v1a-known-issues.md)
 - [Checklist for vNext](Docs/v1b-checklist.md)

@@ -107,6 +107,28 @@ dtoverlay=spi0-1cs,cs0_pin=44`
 dtoverlay=spi1-1cs,cs0_pin=45`
 ```
 
+### Allow non-sudo` access to Network Manager
+
+If you need to use WiFi from your application, it's much simpler to grant access to the NetworkManager to the `netdev` user group.
+
+```
+$ sudo touch /etc/polkit-1/localauthority/90-mandatory.d/99-network.pkla
+$ sudo nano /etc/polkit-1/localauthority/90-mandatory.d/99-network.pkla
+```
+
+Add the following to the bottom of the file (it will likely be empty)
+
+```
+[Allow netdev users to modify all network states and settings]
+Identity=unix-group:netdev
+Action=org.freedesktop.NetworkManager.*
+ResultAny=yes
+ResultInactive=yes
+ResultActive=yes
+```
+
+## Reboot
+
 Many of these changes will not take effect until after a reboot.
 
 ```
