@@ -1,4 +1,4 @@
-﻿using Meadow.Foundation.ICs.IOExpanders;
+﻿using Meadow;
 using Meadow.Hardware;
 using Meadow.Peripherals.Displays;
 using Meadow.Peripherals.Relays;
@@ -6,7 +6,11 @@ using Meadow.Peripherals.Sensors.Buttons;
 
 namespace YoshiPi;
 
-public interface IYoshiPiHardware
+public abstract class YoshiPiApp : App<RaspberryPi, YoshiPiHardwareProvider, IYoshiPiHardware>
+{
+}
+
+public interface IYoshiPiHardware : IMeadowAppEmbeddedHardware
 {
     IRelay Relay1 { get; }
     IRelay Relay2 { get; }
@@ -17,10 +21,9 @@ public interface IYoshiPiHardware
     AdcConnector Adc { get; }
     MikroBusConnector MikroBus { get; }
     II2cBus GroveI2c { get; }
+    II2cBus Qwiic { get; }
 
     IRealTimeClock Rtc { get; }
     IPixelDisplay Display { get; }
-
-    // remove after test
-    Mcp23008 MCP { get; }
+    ICalibratableTouchscreen Touchscreen { get; }
 }

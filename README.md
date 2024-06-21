@@ -1,8 +1,10 @@
 # Introducing YoshiPi: The Ultimate Raspberry Pi Zero 2 W Expansion Board for C# IoT Developers
 
-Unleash the power of your Raspberry Pi Zero 2 W with YoshiPi, the advanced expansion board tailored for C# IoT developers. YoshiPi offers an array of features that simplify development and enhance performance, enabling you to build sophisticated, connected solutions with ease.
+The YoshiPi is coupling of a versatile carrier board for the Raspberry Pi Zero 2 W and the [Wilderness Labs'](https://wildernesslabs.co) Meadow software stack.  It's perfect for C# developers delving into IoT, robotics, and embedded systems. 
 
-![](Docs/Assets/yoshipi_v1b_1.jpg)
+It features 4 10-bit analog inputs, 2 dry contact relays, 10 GPIO pins, a touchscreen display, and connectors for Mikrobus, Grove I2C, and Qwiic I2C, all powered by the robust quad-core 64-bit ARM Cortex-A53 CPU of the Raspberry Pi Zero 2 W. With integrated Wi-Fi and Bluetooth, YoshiPi ensures seamless connectivity and performance. 
+
+![](Docs/Assets/yoshipi_v1b_full_pop_2.png)
 
 ### Key Features:
 
@@ -16,24 +18,14 @@ Unleash the power of your Raspberry Pi Zero 2 W with YoshiPi, the advanced expan
 - **Qwiic I2C Connector:** Connect effortlessly to Qwiic-enabled devices with the Qwiic I2C connector, supporting robust and flexible I2C communication.
 - **Proto-board Area:** Prototype and test custom circuits with ease using the integrated proto-board area, perfect for quick iterations and development.
 
-### Why Choose YoshiPi?
-
-- **Designed for C# IoT Development:** Optimize your development workflow with YoshiPi, a board that caters specifically to the needs of C# IoT developers.
-- **Versatile Connectivity:** Leverage a wide range of input and output options to build comprehensive IoT solutions, from smart home devices to industrial automation.
-- **User-Friendly Interface:** The integrated touchscreen display and intuitive connectors simplify your development process, allowing you to focus on coding and innovation.
-- **Seamless Expandability:** The Mikrobus, Grove, and Qwiic connectors enable easy expansion and enhancement of your projects without complex wiring or soldering.
-- **Reliable Performance:** Built with high-quality components to ensure dependable operation and longevity, giving you peace of mind for your IoT deployments.
-
-Elevate your Raspberry Pi Zero 2 W IoT projects with YoshiPi, the all-in-one expansion board designed to bring your C# applications to life with unmatched functionality and ease. Get YoshiPi today and start creating the future of connected technology!
-
 ## Hardware
 
-Current Hardware Version: **v1a**
+Current Hardware Version: **v1b**
 
 - [Schematic](Hardware/v1b/Schematic_YoshiPi_v1b.pdf)
-- [Validation Checklist](Docs/v1a-validation.md)
-- [Known Issues](Docs/v1a-known-issues.md)
-- [Checklist for vNext](Docs/v1b-checklist.md)
+- [Validation Checklist](Hardware/v1b/v1b-validation.md)
+- [Known Issues](Hardware/v1b/v1b-known-issues.md)
+- [Checklist for vNext](Hardware/v1c/v1c-checklist.md)
 
 ## Getting Started
 

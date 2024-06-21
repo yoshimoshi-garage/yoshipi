@@ -1,14 +1,18 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
+        <AssemblyName>App</AssemblyName>
     </PropertyGroup>
     <ItemGroup>
-      <PackageReference Include="Meadow.Foundation.mikroBUS.Sensors.Gnss.CGNSS10" Version="1.12.0" />
-      <PackageReference Include="Meadow.Foundation.Sensors.Atmospheric.Bh1900Nux" Version="1.12.0" />
+      <ProjectReference Include="..\..\..\..\wilderness\Meadow.Foundation\Source\Meadow.Foundation.Libraries_and_Frameworks\Graphics.MicroLayout\Driver\Graphics.MicroLayout.csproj" />
+      <ProjectReference Include="..\..\..\..\wilderness\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\Sensors.Light.Veml7700\Driver\Sensors.Light.Veml7700.csproj" />
+      <ProjectReference Include="..\YoshiPi\YoshiPi.Hardware\YoshiPi.Hardware.csproj" />
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\YoshiPi\YoshiPi.Hardware\YoshiPi.Hardware.csproj" />
+      <None Update="app.config.yaml">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 </Project>

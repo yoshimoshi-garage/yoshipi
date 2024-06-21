@@ -4,6 +4,7 @@ using Meadow.Foundation.ICs.IOExpanders;
 using Meadow.Foundation.Relays;
 using Meadow.Foundation.RTCs;
 using Meadow.Foundation.Sensors.Buttons;
+using Meadow.Foundation.Sensors.Hid;
 using Meadow.Hardware;
 using Meadow.Peripherals.Displays;
 using Meadow.Peripherals.Relays;
@@ -24,13 +25,16 @@ public class YoshiPi_v1a : IYoshiPiHardware
     private Relay _relay2;
     private IButton? _button1;
     private IButton? _button2;
-    private readonly IDigitalInterruptPort _mcpInt;
+    private readonly IDigitalInterruptPort? _mcpInt;
     private IRealTimeClock? _rtc;
     private IPixelDisplay? _display;
+    private ICalibratableTouchscreen? _touchscreen;
 
+    public IMeadowDevice ComputeModule => _device;
     public GpioConnector Gpio => _gpio;
     public AdcConnector Adc => _adc;
     public II2cBus GroveI2c => _device.CreateI2cBus();
+    public II2cBus Qwiic => _device.CreateI2cBus();
     public MikroBusConnector MikroBus => _mikrobus;
 
     public IRelay Relay1 => _relay1 ??= new Relay(_device.Pins.GPIO16.CreateDigitalOutputPort(false));
@@ -46,7 +50,6 @@ public class YoshiPi_v1a : IYoshiPiHardware
             {
                 var port = _mcp23008.Pins.GP6.CreateDigitalInterruptPort(InterruptMode.EdgeBoth, ResistorMode.InternalPullUp);
                 _button1 = new PushButton(port);
-
             }
 
             return _button1;
@@ -61,7 +64,6 @@ public class YoshiPi_v1a : IYoshiPiHardware
             {
                 var port = _mcp23008.Pins.GP5.CreateDigitalInterruptPort(InterruptMode.EdgeBoth, ResistorMode.InternalPullUp);
                 _button2 = new PushButton(port);
-
             }
 
             return _button2;
@@ -83,6 +85,8 @@ public class YoshiPi_v1a : IYoshiPiHardware
                     _device.Pins.GPIO24,
                     240, 320);
 
+            (_display as Ili9341).InvertDisplay(true);
+
             var backlight = _mcp23008.Pins.GP4.CreateDigitalOutputPort(true);
             backlight.State = true;
 
@@ -90,11 +94,31 @@ public class YoshiPi_v1a : IYoshiPiHardware
         }
     }
 
+    public ICalibratableTouchscreen Touchscreen
+    {
+        get => _touchscreen ?? new Xpt2046(
+            _device.CreateSpiBus(
+                _device.Pins.GPIO21,
+                _device.Pins.GPIO20,
+                _device.Pins.GPIO19,
+                new Frequency(10, Frequency.UnitType.Megahertz)),
+            _device.Pins.GPIO26.CreateDigitalInterruptPort(InterruptMode.EdgeBoth, ResistorMode.Disabled),
+            _mcp23008.Pins.GP7.CreateDigitalOutputPort(true),
+            RotationType.Normal);
+    }
+
     internal YoshiPi_v1a(RaspberryPi device)
     {
         _device = device;
 
-        _mcpInt = _device.Pins.GPIO18.CreateDigitalInterruptPort(InterruptMode.EdgeRising, ResistorMode.Disabled);
+        try
+        {
+            _mcpInt = _device.Pins.GPIO18.CreateDigitalInterruptPort(InterruptMode.EdgeRising, ResistorMode.Disabled);
+        }
+        catch
+        {
+            Resolver.Log.Error("Unable to create MCP23008 Interrupt - it may be in use");
+        }
 
         _mcp23008 = new Mcp23008(
             _device.CreateI2cBus(1),
@@ -119,6 +143,14 @@ public class YoshiPi_v1a : IYoshiPiHardware
                 new PinMapping.PinAlias(GpioConnector.PinNames.D01, device.Pins.GPIO5),
                 new PinMapping.PinAlias(GpioConnector.PinNames.D02, device.Pins.GPIO6),
                 new PinMapping.PinAlias(GpioConnector.PinNames.D03, device.Pins.GPIO13),
+
+                new PinMapping.PinAlias(GpioConnector.PinNames.D04, device.Pins.GPIO27), // also MB_INT
+                new PinMapping.PinAlias(GpioConnector.PinNames.D05, device.Pins.GPIO22), // also MB_RST
+                new PinMapping.PinAlias(GpioConnector.PinNames.D06, device.Pins.GPIO25), // also MB_CS
+                new PinMapping.PinAlias(GpioConnector.PinNames.D07, device.Pins.GPIO12), // also MB_PWM
+                new PinMapping.PinAlias(GpioConnector.PinNames.D08, _mcp23008.Pins.GP7), // also TS_CS
+                new PinMapping.PinAlias(GpioConnector.PinNames.D09, device.Pins.GPIO26), // also TS_INT
+
             });
 
         _adc = new AdcConnector(
