@@ -1,6 +1,6 @@
 # Introducing YoshiPi: The Ultimate Raspberry Pi Zero 2 W Expansion Board for C# IoT Developers
 
-The YoshiPi is coupling of a versatile carrier board for the Raspberry Pi Zero 2 W and the [Wilderness Labs'](https://wildernesslabs.co) Meadow software stack.  It's perfect for C# developers delving into IoT, robotics, and embedded systems. 
+[The YoshiPi is a coupling of a versatile carrier board for the Raspberry Pi Zero 2 W](https://www.yoshimaker.com) and the [Wilderness Labs'](https://wildernesslabs.co) Meadow software stack.  It's perfect for C# developers delving into IoT, robotics, and embedded systems. 
 
 It features 4 10-bit analog inputs, 2 dry contact relays, 10 GPIO pins, a touchscreen display, and connectors for Mikrobus, Grove I2C, and Qwiic I2C, all powered by the robust quad-core 64-bit ARM Cortex-A53 CPU of the Raspberry Pi Zero 2 W. With integrated Wi-Fi and Bluetooth, YoshiPi ensures seamless connectivity and performance. 
 
