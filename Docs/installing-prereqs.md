@@ -6,7 +6,7 @@ Before we can start running our applications, we need to install prerequisite li
 
 Create and edit a new shell script
 ```
-$ nano raspi-dotnet.sh
+nano raspi-dotnet.sh
 ```
 
 ```
@@ -30,7 +30,10 @@ source ~/.bashrc
 List the local files
 
 ```
-$ ls -l
+ls -l
+```
+Which gives an output like this:
+```
 total 4
 -rw-r--r-- 1 pi pi 364 May 28 20:22 raspi-dotnet.sh
 ```
@@ -38,19 +41,22 @@ total 4
 Make the shell script executable
 
 ```
-$ chmod +x raspi-dotnet.sh
-$ ls -l
+chmod +x raspi-dotnet.sh
+```
+The file list will change
+```
+ls -l
 total 4
 -rwxr-xr-x 1 pi pi 364 May 28 20:22 raspi-dotnet.sh
 ```
 
-Execute the script
+Execute the newly-created script
 
 ```
- $ ./raspi-dotnet.sh
+./raspi-dotnet.sh
 ```
 
-This take a long time, like over 5 minutes long.  Be patient.  In the end you should see something like
+This takes a long time, like over 5 minutes long.  Be patient.  In the end you should see something like
 
 ```
 dotnet-install: Installation finished successfully.
@@ -59,8 +65,11 @@ dotnet-install: Installation finished successfully.
 Now re-load your environment and verify the install
 
 ```
-$ source ~/.bashrc
-$ dotnet --version
+source ~/.bashrc
+dotnet --version
+```
+This wll give the installed .NET version.
+```
 8.0.301
 ```
 
@@ -69,7 +78,7 @@ $ dotnet --version
 Now you have to enable access to things like the hardware busses and GPIO
 
 ```
-$ sudo raspi-config
+sudo raspi-config
 ```
 
 ### Enable SPI0
@@ -98,7 +107,7 @@ $ sudo raspi-config
 Enabling the second SPI port (`SPI1`) requires directly modifying the device config file.
 
 ```
-$ sudo nano /boot/firmware/config.txt
+sudo nano /boot/firmware/config.txt
 ```
 
 Navigate to the bottom and add 
@@ -112,8 +121,8 @@ dtoverlay=spi1-1cs,cs0_pin=45`
 If you need to use WiFi from your application, it's much simpler to grant access to the NetworkManager to the `netdev` user group.
 
 ```
-$ sudo touch /etc/polkit-1/localauthority/90-mandatory.d/99-network.pkla
-$ sudo nano /etc/polkit-1/localauthority/90-mandatory.d/99-network.pkla
+sudo touch /etc/polkit-1/localauthority/90-mandatory.d/99-network.pkla
+sudo nano /etc/polkit-1/localauthority/90-mandatory.d/99-network.pkla
 ```
 
 Add the following to the bottom of the file (it will likely be empty)
@@ -127,10 +136,15 @@ ResultInactive=yes
 ResultActive=yes
 ```
 
+## Install the Remote Debugger
+
+```
+```
+
 ## Reboot
 
 Many of these changes will not take effect until after a reboot.
 
 ```
-$ sudo reboot
+sudo reboot
 ```

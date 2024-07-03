@@ -16,7 +16,7 @@ public class YoshiPiHardwareProvider : IMeadowAppEmbeddedHardwareProvider<IYoshi
             return new YoshiPi_v1a(pi);
         }
 
-        // this method is called my MeadowOS, so we should never get here
+        // this method is called by MeadowOS, so we should never get here
         throw new Exception("Invalid IMeadowDevice provided");
     }
 }

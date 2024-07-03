@@ -1,8 +1,10 @@
 ﻿using Meadow;
 using Meadow.Foundation.Graphics.MicroLayout;
+using Meadow.Foundation.Hmi;
 using Meadow.Foundation.Sensors.Light;
 using Meadow.Hardware;
 using System;
+using System.IO;
 using System.Threading.Tasks;
 using YoshiPi;
 
@@ -90,7 +92,7 @@ public class TestService
                 _hardware.Touchscreen)
             );
 
-        var ts = new TouchscreenCalibrationService(_display.Screen);
+        var ts = new TouchscreenCalibrationService(_display.Screen, new FileInfo("calibration.dat"));
 
         ts.EraseCalibrationData();
 
