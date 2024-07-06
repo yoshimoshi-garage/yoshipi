@@ -85,7 +85,7 @@ public class YoshiPi_v1a : IYoshiPiHardware
                     _device.Pins.GPIO24,
                     240, 320);
 
-            (_display as Ili9341).InvertDisplay(true);
+            (_display as Ili9341).InvertDisplay(false);
 
             var backlight = _mcp23008.Pins.GP4.CreateDigitalOutputPort(true);
             backlight.State = true;
