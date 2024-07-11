@@ -9,10 +9,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{142C341D-4
 	ProjectSection(SolutionItems) = preProject
 		..\..\Docs\booting-your-pi.md = ..\..\Docs\booting-your-pi.md
 		..\..\Docs\create-an-sd-card.md = ..\..\Docs\create-an-sd-card.md
+		..\..\Docs\debugging-vscode.md = ..\..\Docs\debugging-vscode.md
 		..\..\Docs\getting-started.md = ..\..\Docs\getting-started.md
 		..\..\Docs\installing-prereqs.md = ..\..\Docs\installing-prereqs.md
+		..\..\Docs\launch.json.md = ..\..\Docs\launch.json.md
 		..\..\README.md = ..\..\README.md
+		..\..\Docs\tasks.json.md = ..\..\Docs\tasks.json.md
 		..\..\Docs\troubleshooting.md = ..\..\Docs\troubleshooting.md
+		..\..\Docs\yoshipub.bat.md = ..\..\Docs\yoshipub.bat.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YoshiPi.Hardware", "YoshiPi.Hardware\YoshiPi.Hardware.csproj", "{F2AF15A6-4EF6-45B1-9E5C-F40E53D02510}"
@@ -35,6 +39,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WiFinder.YoshiPi", "..\Samples\WiFinder\WiFinder.YoshiPi\WiFinder.YoshiPi.csproj", "{467B84C5-2846-42F5-B3E0-6A638A8E1E67}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServoSample", "..\Samples\ServoSample\ServoSample.csproj", "{8F46FFC6-9136-450D-9144-07CF587EA2EE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WateringCan", "..\Samples\WateringCan\WateringCan.csproj", "{D9F66147-1C47-48A2-85CC-86EC632ED61B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CANMonitor", "CANMonitor", "{F1806123-FB8D-49FB-AA99-AD2E1CB60C0B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -64,6 +72,10 @@ Global
 		{8F46FFC6-9136-450D-9144-07CF587EA2EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F46FFC6-9136-450D-9144-07CF587EA2EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F46FFC6-9136-450D-9144-07CF587EA2EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9F66147-1C47-48A2-85CC-86EC632ED61B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9F66147-1C47-48A2-85CC-86EC632ED61B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9F66147-1C47-48A2-85CC-86EC632ED61B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9F66147-1C47-48A2-85CC-86EC632ED61B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,6 +87,8 @@ Global
 		{2068A107-BE8C-45D5-8840-D88FA4DBCA0F} = {3B33A531-A1BD-4D94-81B1-89800BB60AEC}
 		{467B84C5-2846-42F5-B3E0-6A638A8E1E67} = {3B33A531-A1BD-4D94-81B1-89800BB60AEC}
 		{8F46FFC6-9136-450D-9144-07CF587EA2EE} = {A48F9748-6C61-4073-8A9B-A1BE3838D80D}
+		{D9F66147-1C47-48A2-85CC-86EC632ED61B} = {A48F9748-6C61-4073-8A9B-A1BE3838D80D}
+		{F1806123-FB8D-49FB-AA99-AD2E1CB60C0B} = {A48F9748-6C61-4073-8A9B-A1BE3838D80D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5197CC37-0FFC-412B-818D-2EA24F112E20}

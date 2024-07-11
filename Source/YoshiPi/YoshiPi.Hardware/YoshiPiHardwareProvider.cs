@@ -13,7 +13,7 @@ public class YoshiPiHardwareProvider : IMeadowAppEmbeddedHardwareProvider<IYoshi
     {
         if (device is RaspberryPi pi)
         {
-            return new YoshiPi_v1a(pi);
+            return new YoshiPi_v1b(pi);
         }
 
         // this method is called by MeadowOS, so we should never get here

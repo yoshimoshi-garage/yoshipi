@@ -6,14 +6,11 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AssemblyName>App</AssemblyName>
+      <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Meadow.Foundation.Grove.Servos.Servo" Version="*-*" />
-    <PackageReference Include="Meadow.Foundation.ICs.IOExpanders.Pca9685" Version="*-*" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\wilderness\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\ICs.CAN.Mcp2515\Driver\ICs.CAN.Mcp2515.csproj" />
     <ProjectReference Include="..\..\YoshiPi\YoshiPi.Hardware\YoshiPi.Hardware.csproj" />
   </ItemGroup>
 

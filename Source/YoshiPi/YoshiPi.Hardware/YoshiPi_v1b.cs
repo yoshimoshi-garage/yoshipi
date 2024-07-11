@@ -13,7 +13,7 @@ using Meadow.Units;
 
 namespace YoshiPi;
 
-public class YoshiPi_v1a : IYoshiPiHardware
+public class YoshiPi_v1b : IYoshiPiHardware
 {
     private readonly RaspberryPi _device;
     private readonly Mcp23008 _mcp23008;
@@ -75,10 +75,7 @@ public class YoshiPi_v1a : IYoshiPiHardware
         get
         {
             _display ??= new Ili9341(
-                    _device.CreateSpiBus(
-                        _device.Pins.GPIO11,
-                        _device.Pins.GPIO10,
-                        _device.Pins.GPIO9,
+                    _device.CreateSpiBus(0,
                         new Frequency(10, Frequency.UnitType.Megahertz)),
                     _device.Pins.GPIO4,
                     _device.Pins.GPIO23,
@@ -97,17 +94,14 @@ public class YoshiPi_v1a : IYoshiPiHardware
     public ICalibratableTouchscreen Touchscreen
     {
         get => _touchscreen ?? new Xpt2046(
-            _device.CreateSpiBus(
-                _device.Pins.GPIO21,
-                _device.Pins.GPIO20,
-                _device.Pins.GPIO19,
+            _device.CreateSpiBus(1,
                 new Frequency(10, Frequency.UnitType.Megahertz)),
             _device.Pins.GPIO26.CreateDigitalInterruptPort(InterruptMode.EdgeBoth, ResistorMode.Disabled),
             _mcp23008.Pins.GP7.CreateDigitalOutputPort(true),
             RotationType.Normal);
     }
 
-    internal YoshiPi_v1a(RaspberryPi device)
+    internal YoshiPi_v1b(RaspberryPi device)
     {
         _device = device;
 
@@ -128,10 +122,7 @@ public class YoshiPi_v1a : IYoshiPiHardware
             );
 
         _mcp3004 = new Mcp3004(
-            _device.CreateSpiBus(
-                _device.Pins.GPIO21,
-                _device.Pins.GPIO20,
-                _device.Pins.GPIO19,
+            _device.CreateSpiBus(1,
                 new Frequency(2.34, Frequency.UnitType.Megahertz)),
             _device.Pins.Pin24.CreateDigitalOutputPort(true));
 
