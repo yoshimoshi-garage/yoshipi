@@ -258,16 +258,43 @@ public class TestService
 
     public async Task<TestResult> TestQwiic()
     {
-        var sensor = new Veml7700(_hardware.Qwiic);
-        sensor.StartUpdating();
+        Veml7700? sensor = null;
+        try
+        {
+            sensor = new Veml7700(_hardware.Qwiic);
+            sensor.StartUpdating();
+        }
+        catch (Exception ex)
+        {
+            Resolver.Log.Warn($"Unable to create Light Sensor: {ex.Message}");
+        }
 
         _display.SetTestName("Qwiic Light Sensor");
-        _display.SetQuestionText("Does this light look correct?");
+
+        if (sensor == null)
+        {
+            _display.SetQuestionText("Light sensor missing. Press SKIP");
+        }
+        else
+        {
+            _display.SetQuestionText("Does this light look correct?");
+        }
 
         while (_lastResult == null)
         {
-            var read = await sensor.Read();
-            _display.SetInputsLabel($"{read.Lux:n0} lux");
+            if (sensor != null)
+            {
+                try
+                {
+                    var read = await sensor.Read();
+                    _display.SetInputsLabel($"{read.Lux:n0} lux");
+                }
+                catch (Exception ex)
+                {
+                    _display.SetQuestionText("Light sensor missing. Press SKIP");
+                    Resolver.Log.Warn($"Unable to read Light Sensor: {ex.Message}");
+                }
+            }
 
             await Task.Delay(1000);
         }
