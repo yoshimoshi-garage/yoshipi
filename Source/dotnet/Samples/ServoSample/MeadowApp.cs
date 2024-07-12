@@ -3,6 +3,7 @@ using Meadow.Foundation.ICs.IOExpanders;
 using Meadow.Foundation.Servos;
 using Meadow.Hardware;
 using Meadow.Peripherals;
+using Meadow.Units;
 using YoshiPi;
 
 namespace ServoSample;
@@ -60,7 +61,7 @@ public class MeadowApp : YoshiPiApp
     {
         _crServo = new Fs90r(_pwm)
         {
-            TrimOffset = TimeSpan.FromMicroseconds(100)
+            TrimOffset = TimePeriod.FromMicroseconds(100)
         };
     }
 

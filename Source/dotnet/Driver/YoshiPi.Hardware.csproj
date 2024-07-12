@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+      <Version>1.0</Version>
+      <TargetFramework>net8.0</TargetFramework>
+      <Nullable>enable</Nullable>
+      <LangVersion>10</LangVersion>
+      <PackageReadmeFile>Readme.md</PackageReadmeFile>
+      <Nullable>enable</Nullable>
+      <PackageLicenseExpression>MIT</PackageLicenseExpression>
+      <GenerateDocumentationFile>true</GenerateDocumentationFile>
+      <PackageIcon>icon.png</PackageIcon>
+      <Authors>YoshiMaker</Authors>
+      <OutputType>Library</OutputType>
+      <AssemblyName>YoshiPi</AssemblyName>
+      <Company>YoshiMaker</Company>
+      <PackageProjectUrl>http://www.yoshimaker.com</PackageProjectUrl>
+      <PackageId>YoshiPi</PackageId>
+      <RepositoryUrl>https://github.com/yoshimoshi-garage/yoshipi</RepositoryUrl>
+      <PackageTags>Raspberry Pi, Meadow, YoshiPi, ADC</PackageTags>
+      <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+      <Description>Library to provide simple access to all YoshiPi hardware using the Meadow software stack</Description>
+
+  </PropertyGroup>
+    <ItemGroup>
+        <None Include="Readme.md" Pack="true" PackagePath="" />
+        <None Include="icon.png" Pack="true" PackagePath="" />        
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="Meadow.Foundation.Displays.TftSpi" Version="*" />
+      <PackageReference Include="Meadow.Foundation.Graphics.MicroGraphics" Version="*" />
+      <PackageReference Include="Meadow.Foundation.ICs.ADCs.Mcp3xxx" Version="*" />
+      <PackageReference Include="Meadow.Foundation.ICs.IOExpanders.Mcp23xxx" Version="*" />
+      <PackageReference Include="Meadow.Foundation.RTCs.Ds323x" Version="*" />
+      <PackageReference Include="Meadow.Foundation.Sensors.Hid.Xpt2046" Version="*" />
+      <PackageReference Include="Meadow.Linux" Version="*" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34714.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{142C341D-4DB9-4643-8EAF-21F35A3AB47F}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Docs\booting-your-pi.md = ..\..\Docs\booting-your-pi.md
+		..\..\Docs\create-an-sd-card.md = ..\..\Docs\create-an-sd-card.md
+		..\..\Docs\getting-started.md = ..\..\Docs\getting-started.md
+		..\..\Docs\installing-prereqs.md = ..\..\Docs\installing-prereqs.md
+		..\..\README.md = ..\..\README.md
+		..\..\Docs\troubleshooting.md = ..\..\Docs\troubleshooting.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "hardware", "hardware", "{55CAB931-C65A-45EB-80A9-864A12D0BCB2}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Hardware\v1b\Schematic_YoshiPi_v1b.pdf = ..\..\Hardware\v1b\Schematic_YoshiPi_v1b.pdf
+		..\..\Hardware\v1b\v1b-BOM.md = ..\..\Hardware\v1b\v1b-BOM.md
+		..\..\Hardware\v1b\v1b-checklist.md = ..\..\Hardware\v1b\v1b-checklist.md
+		..\..\Hardware\v1b\v1b-known-issues.md = ..\..\Hardware\v1b\v1b-known-issues.md
+		..\..\Hardware\v1b\v1b-validation.md = ..\..\Hardware\v1b\v1b-validation.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{A48F9748-6C61-4073-8A9B-A1BE3838D80D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YoshiPi.Hardware", "Driver\YoshiPi.Hardware.csproj", "{4D855774-7004-494D-AF1D-B6B453B1A419}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValidationApp", "Samples\ValidationApp\ValidationApp.csproj", "{BB910C1D-2479-414E-AAFC-0EC538C72276}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4D855774-7004-494D-AF1D-B6B453B1A419}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D855774-7004-494D-AF1D-B6B453B1A419}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D855774-7004-494D-AF1D-B6B453B1A419}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D855774-7004-494D-AF1D-B6B453B1A419}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB910C1D-2479-414E-AAFC-0EC538C72276}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB910C1D-2479-414E-AAFC-0EC538C72276}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB910C1D-2479-414E-AAFC-0EC538C72276}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB910C1D-2479-414E-AAFC-0EC538C72276}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{55CAB931-C65A-45EB-80A9-864A12D0BCB2} = {142C341D-4DB9-4643-8EAF-21F35A3AB47F}
+		{BB910C1D-2479-414E-AAFC-0EC538C72276} = {A48F9748-6C61-4073-8A9B-A1BE3838D80D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5197CC37-0FFC-412B-818D-2EA24F112E20}
+	EndGlobalSection
+EndGlobal

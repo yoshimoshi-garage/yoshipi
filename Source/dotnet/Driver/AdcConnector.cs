@@ -2,8 +2,14 @@
 
 namespace YoshiPi;
 
+/// <summary>
+/// Represents a ADC connector that provides access to ADC pins through defined pin names.
+/// </summary>
 public class AdcConnector : Connector<AdcPinDefinitions>
 {
+    /// <summary>
+    /// Contains the names of the ADC pins.
+    /// </summary>
     public static class PinNames
     {
         /// <summary>
