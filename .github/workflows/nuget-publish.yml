@@ -17,7 +17,7 @@ jobs:
       uses: actions/setup-dotnet@v4
       
     - name: Build
-      run: dotnet build Source/dotnet/Driver/YoshiPi.Hardware.csproj Source/dotnet/Driver/YoshiPi.Hardware.csproj
+      run: dotnet build Source/dotnet/Driver/YoshiPi.Hardware.csproj -c Release
     - name: Pack nugets
       run: dotnet pack Source/dotnet/Driver/YoshiPi.Hardware.csproj -c Release --no-build --output .
       
