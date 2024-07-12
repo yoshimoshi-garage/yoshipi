@@ -10,10 +10,14 @@ using Meadow.Peripherals.Displays;
 using Meadow.Peripherals.Relays;
 using Meadow.Peripherals.Sensors.Buttons;
 using Meadow.Units;
+using System;
 
 namespace YoshiPi;
 
-public class YoshiPi_v1a : IYoshiPiHardware
+/// <summary>
+/// Represents YoshiPi hardware revision v1b
+/// </summary>
+public class YoshiPi_v1b : IYoshiPiHardware, IDisposable
 {
     private readonly RaspberryPi _device;
     private readonly Mcp23008 _mcp23008;
@@ -22,92 +26,41 @@ public class YoshiPi_v1a : IYoshiPiHardware
     private readonly AdcConnector _adc;
     private readonly MikroBusConnector _mikrobus;
     private IRelay? _relay1;
-    private Relay _relay2;
+    private IRelay? _relay2;
     private IButton? _button1;
     private IButton? _button2;
     private readonly IDigitalInterruptPort? _mcpInt;
     private IRealTimeClock? _rtc;
     private IPixelDisplay? _display;
     private ICalibratableTouchscreen? _touchscreen;
+    private IDigitalOutputPort _displayCsOutputPort;
+    private IDigitalOutputPort _displayDcOutputPort;
+    private IDigitalOutputPort _displayResetOutputPort;
+    private bool _isDisposed;
 
+    /// <inheritdoc/>
     public IMeadowDevice ComputeModule => _device;
+    /// <inheritdoc/>
     public GpioConnector Gpio => _gpio;
+    /// <inheritdoc/>
     public AdcConnector Adc => _adc;
+    /// <inheritdoc/>
     public II2cBus GroveI2c => _device.CreateI2cBus();
+    /// <inheritdoc/>
     public II2cBus Qwiic => _device.CreateI2cBus();
+    /// <inheritdoc/>
     public MikroBusConnector MikroBus => _mikrobus;
 
+    /// <inheritdoc/>
     public IRelay Relay1 => _relay1 ??= new Relay(_device.Pins.GPIO16.CreateDigitalOutputPort(false));
+    /// <inheritdoc/>
     public IRelay Relay2 => _relay2 ??= new Relay(_mcp23008.Pins.GP3.CreateDigitalOutputPort(false));
+    /// <inheritdoc/>
     public IRealTimeClock Rtc => _rtc ??= new Ds3231(_device.CreateI2cBus());
+    /// <inheritdoc/>
     public Mcp23008 MCP => _mcp23008;
 
-    public IButton Button1
-    {
-        get
-        {
-            if (_button1 == null)
-            {
-                var port = _mcp23008.Pins.GP6.CreateDigitalInterruptPort(InterruptMode.EdgeBoth, ResistorMode.InternalPullUp);
-                _button1 = new PushButton(port);
-            }
-
-            return _button1;
-        }
-    }
-
-    public IButton Button2
-    {
-        get
-        {
-            if (_button2 == null)
-            {
-                var port = _mcp23008.Pins.GP5.CreateDigitalInterruptPort(InterruptMode.EdgeBoth, ResistorMode.InternalPullUp);
-                _button2 = new PushButton(port);
-            }
-
-            return _button2;
-        }
-    }
-
-    public IPixelDisplay Display
-    {
-        get
-        {
-            _display ??= new Ili9341(
-                    _device.CreateSpiBus(
-                        _device.Pins.GPIO11,
-                        _device.Pins.GPIO10,
-                        _device.Pins.GPIO9,
-                        new Frequency(10, Frequency.UnitType.Megahertz)),
-                    _device.Pins.GPIO4,
-                    _device.Pins.GPIO23,
-                    _device.Pins.GPIO24,
-                    240, 320);
-
-            (_display as Ili9341).InvertDisplay(true);
-
-            var backlight = _mcp23008.Pins.GP4.CreateDigitalOutputPort(true);
-            backlight.State = true;
-
-            return _display;
-        }
-    }
-
-    public ICalibratableTouchscreen Touchscreen
-    {
-        get => _touchscreen ?? new Xpt2046(
-            _device.CreateSpiBus(
-                _device.Pins.GPIO21,
-                _device.Pins.GPIO20,
-                _device.Pins.GPIO19,
-                new Frequency(10, Frequency.UnitType.Megahertz)),
-            _device.Pins.GPIO26.CreateDigitalInterruptPort(InterruptMode.EdgeBoth, ResistorMode.Disabled),
-            _mcp23008.Pins.GP7.CreateDigitalOutputPort(true),
-            RotationType.Normal);
-    }
-
-    internal YoshiPi_v1a(RaspberryPi device)
+    internal YoshiPi_v1b(RaspberryPi device)
     {
         _device = device;
 
@@ -119,6 +72,10 @@ public class YoshiPi_v1a : IYoshiPiHardware
         {
             Resolver.Log.Error("Unable to create MCP23008 Interrupt - it may be in use");
         }
+
+        _displayCsOutputPort = _device.Pins.GPIO4.CreateDigitalOutputPort(true);
+        _displayDcOutputPort = _device.Pins.GPIO23.CreateDigitalOutputPort();
+        _displayResetOutputPort = _device.Pins.GPIO24.CreateDigitalOutputPort();
 
         _mcp23008 = new Mcp23008(
             _device.CreateI2cBus(1),
@@ -186,4 +143,90 @@ public class YoshiPi_v1a : IYoshiPiHardware
             );
     }
 
+    /// <inheritdoc/>
+    public IButton Button1
+    {
+        get
+        {
+            if (_button1 == null)
+            {
+                var port = _mcp23008.Pins.GP6.CreateDigitalInterruptPort(InterruptMode.EdgeBoth, ResistorMode.InternalPullUp);
+                _button1 = new PushButton(port);
+            }
+
+            return _button1;
+        }
+    }
+
+    /// <inheritdoc/>
+    public IButton Button2
+    {
+        get
+        {
+            if (_button2 == null)
+            {
+                var port = _mcp23008.Pins.GP5.CreateDigitalInterruptPort(InterruptMode.EdgeBoth, ResistorMode.InternalPullUp);
+                _button2 = new PushButton(port);
+            }
+
+            return _button2;
+        }
+    }
+
+    /// <inheritdoc/>
+    public IPixelDisplay Display
+    {
+        get
+        {
+            _display ??= new Ili9341(
+                    _device.CreateSpiBus(0,
+                        new Frequency(10, Frequency.UnitType.Megahertz)),
+                    _displayCsOutputPort,
+                    _displayDcOutputPort,
+                    _displayResetOutputPort,
+                    240, 320);
+
+            (_display as Ili9341).InvertDisplay(true);
+
+            var backlight = _mcp23008.Pins.GP4.CreateDigitalOutputPort(true);
+            backlight.State = true;
+
+            return _display;
+        }
+    }
+
+    /// <inheritdoc/>
+    public ICalibratableTouchscreen Touchscreen
+    {
+        get => _touchscreen ?? new Xpt2046(
+            _device.CreateSpiBus(1,
+                new Frequency(10, Frequency.UnitType.Megahertz)),
+            _device.Pins.GPIO26.CreateDigitalInterruptPort(InterruptMode.EdgeBoth, ResistorMode.Disabled),
+            _mcp23008.Pins.GP7.CreateDigitalOutputPort(true),
+            RotationType.Normal);
+    }
+
+    /// <inheritdoc/>
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!_isDisposed)
+        {
+            if (disposing)
+            {
+                _displayCsOutputPort.Dispose();
+                _displayDcOutputPort.Dispose();
+                _displayResetOutputPort.Dispose();
+            }
+
+            _isDisposed = true;
+        }
+    }
+
+    /// <inheritdoc/>
+    public void Dispose()
+    {
+        // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+        Dispose(disposing: true);
+        GC.SuppressFinalize(this);
+    }
 }

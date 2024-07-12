@@ -6,9 +6,11 @@
         <AssemblyName>App</AssemblyName>
     </PropertyGroup>
     <ItemGroup>
-      <ProjectReference Include="..\YoshiPi\YoshiPi.Hardware\YoshiPi.Hardware.csproj" />
       <PackageReference Include="Meadow.Foundation.Graphics.MicroLayout" Version="*" />
       <PackageReference Include="Meadow.Foundation.Sensors.Light.Veml7700" Version="*" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\..\Driver\YoshiPi.Hardware.csproj" />
     </ItemGroup>
     <ItemGroup>
       <None Update="app.config.yaml">

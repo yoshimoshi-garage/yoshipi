@@ -4,6 +4,10 @@ using System;
 
 namespace YoshiPi;
 
+/// <summary>
+/// Represents the GPIO pin definitions for a device, providing access to each pin and
+/// throwing a <see cref="PlatformNotSupportedException"/> if a pin is not connected.
+/// </summary>
 public class GpioPinDefinitions : PinDefinitionBase
 {
     private readonly IPin? _d00;
@@ -17,15 +21,45 @@ public class GpioPinDefinitions : PinDefinitionBase
     private readonly IPin? _d08;
     private readonly IPin? _d09;
 
+    /// <summary>
+    /// Gets the pin D00
+    /// </summary>
     public IPin D00 => _d00 ?? throw new PlatformNotSupportedException("Pin not connected");
+    /// <summary>
+    /// Gets the pin D01
+    /// </summary>
     public IPin D01 => _d01 ?? throw new PlatformNotSupportedException("Pin not connected");
+    /// <summary>
+    /// Gets the pin D02
+    /// </summary>
     public IPin D02 => _d02 ?? throw new PlatformNotSupportedException("Pin not connected");
+    /// <summary>
+    /// Gets the pin D03
+    /// </summary>
     public IPin D03 => _d03 ?? throw new PlatformNotSupportedException("Pin not connected");
+    /// <summary>
+    /// Gets the pin D04
+    /// </summary>
     public IPin D04 => _d04 ?? throw new PlatformNotSupportedException("Pin not connected");
+    /// <summary>
+    /// Gets the pin D05
+    /// </summary>
     public IPin D05 => _d05 ?? throw new PlatformNotSupportedException("Pin not connected");
+    /// <summary>
+    /// Gets the pin D06
+    /// </summary>
     public IPin D06 => _d06 ?? throw new PlatformNotSupportedException("Pin not connected");
+    /// <summary>
+    /// Gets the pin D07
+    /// </summary>
     public IPin D07 => _d07 ?? throw new PlatformNotSupportedException("Pin not connected");
+    /// <summary>
+    /// Gets the pin D08
+    /// </summary>
     public IPin D08 => _d08 ?? throw new PlatformNotSupportedException("Pin not connected");
+    /// <summary>
+    /// Gets the pin D09
+    /// </summary>
     public IPin D09 => _d09 ?? throw new PlatformNotSupportedException("Pin not connected");
 
     internal GpioPinDefinitions(
