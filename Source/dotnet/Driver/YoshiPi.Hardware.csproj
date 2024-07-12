@@ -15,7 +15,7 @@
       <AssemblyName>YoshiPi</AssemblyName>
       <Company>YoshiMaker</Company>
       <PackageProjectUrl>http://www.yoshimaker.com</PackageProjectUrl>
-      <PackageId>YoshiPi</PackageId>
+      <PackageId>YoshiMaker.YoshiPi</PackageId>
       <RepositoryUrl>https://github.com/yoshimoshi-garage/yoshipi</RepositoryUrl>
       <PackageTags>Raspberry Pi, Meadow, YoshiPi, ADC</PackageTags>
       <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
