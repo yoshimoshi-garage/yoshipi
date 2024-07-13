@@ -14,14 +14,10 @@ using System;
 
 namespace YoshiPi;
 
-<<<<<<<< HEAD:Source/dotnet/YoshiPi/YoshiPi.Hardware/YoshiPi_v1b.cs
-public class YoshiPi_v1b : IYoshiPiHardware
-========
 /// <summary>
 /// Represents YoshiPi hardware revision v1b
 /// </summary>
 public class YoshiPi_v1b : IYoshiPiHardware, IDisposable
->>>>>>>> main:Source/dotnet/Driver/YoshiPi_v1b.cs
 {
     private readonly RaspberryPi _device;
     private readonly Mcp23008 _mcp23008;
@@ -40,6 +36,8 @@ public class YoshiPi_v1b : IYoshiPiHardware, IDisposable
     private IDigitalOutputPort _displayCsOutputPort;
     private IDigitalOutputPort _displayDcOutputPort;
     private IDigitalOutputPort _displayResetOutputPort;
+    private IDigitalOutputPort _touchChipSelect;
+
     private bool _isDisposed;
 
     /// <inheritdoc/>
@@ -64,68 +62,6 @@ public class YoshiPi_v1b : IYoshiPiHardware, IDisposable
     /// <inheritdoc/>
     public Mcp23008 MCP => _mcp23008;
 
-<<<<<<<< HEAD:Source/dotnet/YoshiPi/YoshiPi.Hardware/YoshiPi_v1b.cs
-    public IButton Button1
-    {
-        get
-        {
-            if (_button1 == null)
-            {
-                var port = _mcp23008.Pins.GP6.CreateDigitalInterruptPort(InterruptMode.EdgeBoth, ResistorMode.InternalPullUp);
-                _button1 = new PushButton(port);
-            }
-
-            return _button1;
-        }
-    }
-
-    public IButton Button2
-    {
-        get
-        {
-            if (_button2 == null)
-            {
-                var port = _mcp23008.Pins.GP5.CreateDigitalInterruptPort(InterruptMode.EdgeBoth, ResistorMode.InternalPullUp);
-                _button2 = new PushButton(port);
-            }
-
-            return _button2;
-        }
-    }
-
-    public IPixelDisplay Display
-    {
-        get
-        {
-            _display ??= new Ili9341(
-                    _device.CreateSpiBus(0,
-                        new Frequency(10, Frequency.UnitType.Megahertz)),
-                    _device.Pins.GPIO4,
-                    _device.Pins.GPIO23,
-                    _device.Pins.GPIO24,
-                    240, 320);
-
-            (_display as Ili9341).InvertDisplay(true);
-
-            var backlight = _mcp23008.Pins.GP4.CreateDigitalOutputPort(true);
-            backlight.State = true;
-
-            return _display;
-        }
-    }
-
-    public ICalibratableTouchscreen Touchscreen
-    {
-        get => _touchscreen ?? new Xpt2046(
-            _device.CreateSpiBus(1,
-                new Frequency(10, Frequency.UnitType.Megahertz)),
-            _device.Pins.GPIO26.CreateDigitalInterruptPort(InterruptMode.EdgeBoth, ResistorMode.Disabled),
-            _mcp23008.Pins.GP7.CreateDigitalOutputPort(true),
-            RotationType.Normal);
-    }
-
-========
->>>>>>>> main:Source/dotnet/Driver/YoshiPi_v1b.cs
     internal YoshiPi_v1b(RaspberryPi device)
     {
         _device = device;
@@ -149,6 +85,8 @@ public class YoshiPi_v1b : IYoshiPiHardware, IDisposable
             interruptPort: _mcpInt,
             resetPort: _device.Pins.GPIO17.CreateDigitalOutputPort(false)
             );
+
+        _touchChipSelect = _mcp23008.Pins.GP7.CreateDigitalOutputPort(true);
 
         _mcp3004 = new Mcp3004(
             _device.CreateSpiBus(1,
@@ -265,7 +203,7 @@ public class YoshiPi_v1b : IYoshiPiHardware, IDisposable
             _device.CreateSpiBus(1,
                 new Frequency(10, Frequency.UnitType.Megahertz)),
             _device.Pins.GPIO26.CreateDigitalInterruptPort(InterruptMode.EdgeBoth, ResistorMode.Disabled),
-            _mcp23008.Pins.GP7.CreateDigitalOutputPort(true),
+            _touchChipSelect,
             RotationType.Normal);
     }
 

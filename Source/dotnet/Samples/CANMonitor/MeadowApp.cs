@@ -14,7 +14,9 @@ public class MeadowApp : YoshiPiApp
 
         _mcp = new Mcp2515(
             Hardware.MikroBus.SpiBus,
-            Hardware.MikroBus.Pins.CS.CreateDigitalOutputPort(),
+            Hardware.MikroBus.Pins.RST.CreateDigitalOutputPort(true),
+            CanBitrate.Can_250kbps,
+            CanOscillator.Osc_8MHz,
             Resolver.Log);
 
         return Task.CompletedTask;
@@ -24,12 +26,18 @@ public class MeadowApp : YoshiPiApp
     {
         while (true)
         {
+
             if (_mcp.IsFrameAvailable())
             {
                 Resolver.Log.Info("Frame available");
                 var frame = _mcp.ReadFrame();
 
-                Resolver.Log.Info($"ID: {frame.Value.ID} contains {frame.Value.Payload.Length} bytes");
+                if (frame != null)
+                {
+
+
+                    Resolver.Log.Info($"ID: 0x{frame.Value.ID:X2} contains {BitConverter.ToString(frame.Value.Payload)} bytes");
+                }
             }
             else
             {
@@ -37,6 +45,7 @@ public class MeadowApp : YoshiPiApp
             }
 
             await Task.Delay(1000);
+            Resolver.Log.Info("TX");
             _mcp.WriteFrame(new Mcp2515.Frame
             {
                 ID = 0x0CF103000,
