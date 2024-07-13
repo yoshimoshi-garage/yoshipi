@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34714.143
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValidationApp", "..\ValidationApp\ValidationApp.csproj", "{757E13E6-0291-4A4C-9414-52899DB85B4D}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{142C341D-4DB9-4643-8EAF-21F35A3AB47F}"
 	ProjectSection(SolutionItems) = preProject
 		..\..\Docs\booting-your-pi.md = ..\..\Docs\booting-your-pi.md
@@ -14,8 +12,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{142C341D-4
 		..\..\README.md = ..\..\README.md
 		..\..\Docs\troubleshooting.md = ..\..\Docs\troubleshooting.md
 	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YoshiPi.Hardware", "YoshiPi.Hardware\YoshiPi.Hardware.csproj", "{F2AF15A6-4EF6-45B1-9E5C-F40E53D02510}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "hardware", "hardware", "{55CAB931-C65A-45EB-80A9-864A12D0BCB2}"
 	ProjectSection(SolutionItems) = preProject
@@ -36,9 +32,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{A48F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WiFinder", "WiFinder", "{3B33A531-A1BD-4D94-81B1-89800BB60AEC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WiFinder.Core", "..\Samples\WiFinder\WiFinder.Core\WiFinder.Core.csproj", "{2068A107-BE8C-45D5-8840-D88FA4DBCA0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WiFinder.Core", "Samples\WiFinder\WiFinder.Core\WiFinder.Core.csproj", "{2068A107-BE8C-45D5-8840-D88FA4DBCA0F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WiFinder.YoshiPi", "..\Samples\WiFinder\WiFinder.YoshiPi\WiFinder.YoshiPi.csproj", "{467B84C5-2846-42F5-B3E0-6A638A8E1E67}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WiFinder.YoshiPi", "Samples\WiFinder\WiFinder.YoshiPi\WiFinder.YoshiPi.csproj", "{467B84C5-2846-42F5-B3E0-6A638A8E1E67}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meadow.Core", "..\..\..\..\wilderness\Meadow.Core\source\Meadow.Core\Meadow.Core.csproj", "{9091FE31-D7F2-4288-BFFB-2EF41BF3E030}"
 EndProject
@@ -58,7 +54,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sensors.Hid.Xpt2046", "..\.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sensors.Light.Veml7700", "..\..\..\..\wilderness\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\Sensors.Light.Veml7700\Driver\Sensors.Light.Veml7700.csproj", "{95546090-B149-4A06-A30F-2F66E6D087C0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServoSample", "..\Samples\ServoSample\ServoSample.csproj", "{8F46FFC6-9136-450D-9144-07CF587EA2EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServoSample", "Samples\ServoSample\ServoSample.csproj", "{8F46FFC6-9136-450D-9144-07CF587EA2EE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ICs.IOExpanders.Pca9685", "..\..\..\..\wilderness\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\ICs.IOExpanders.Pca9685\Driver\ICs.IOExpanders.Pca9685.csproj", "{E4D45D16-47F3-4894-A22C-76AC3F91F7A9}"
 EndProject
@@ -70,13 +66,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serialization.MicroJson", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ICs.CAN.Mcp2515", "..\..\..\..\wilderness\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\ICs.CAN.Mcp2515\Driver\ICs.CAN.Mcp2515.csproj", "{43F8E259-B2BC-44D9-BFF5-3C9F42801DB7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CANMonitor", "..\Samples\CANMonitor\CANMonitor.csproj", "{3A301A26-83E3-44E0-BA60-CF5D266A69E3}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meadow.Logging", "..\..\..\..\wilderness\Meadow.Logging\Source\Meadow.Logging\lib\Meadow.Logging.csproj", "{0126A9DF-8D26-427E-ADFE-8AAAFC8CEBC6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WateringCan", "..\Samples\WateringCan\WateringCan.csproj", "{F81ABD20-4768-4BEB-81B5-712A5DC95D66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WateringCan", "Samples\WateringCan\WateringCan.csproj", "{F81ABD20-4768-4BEB-81B5-712A5DC95D66}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sensors.Volume.ResistiveTankLevelSender", "..\..\..\..\wilderness\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\Sensors.Volume.ResistiveTankLevelSender\Driver\Sensors.Volume.ResistiveTankLevelSender.csproj", "{84A66186-D819-4875-BB1C-580BDEABBCE2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValidationApp", "Samples\ValidationApp\ValidationApp.csproj", "{DFF30532-C689-41D7-BA40-3597B05F6BA3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YoshiPi.Hardware", "Driver\YoshiPi.Hardware.csproj", "{0E147A7B-1996-4414-AFA0-DC7074E2ED2E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WateringCan", "WateringCan", "{C9C26CFE-1963-44B6-9C74-10750AA43709}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -84,14 +84,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{757E13E6-0291-4A4C-9414-52899DB85B4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{757E13E6-0291-4A4C-9414-52899DB85B4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{757E13E6-0291-4A4C-9414-52899DB85B4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{757E13E6-0291-4A4C-9414-52899DB85B4D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F2AF15A6-4EF6-45B1-9E5C-F40E53D02510}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F2AF15A6-4EF6-45B1-9E5C-F40E53D02510}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F2AF15A6-4EF6-45B1-9E5C-F40E53D02510}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F2AF15A6-4EF6-45B1-9E5C-F40E53D02510}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F7CB2AE5-6652-49DA-AF15-ADE1CC8ECE41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F7CB2AE5-6652-49DA-AF15-ADE1CC8ECE41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7CB2AE5-6652-49DA-AF15-ADE1CC8ECE41}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -198,10 +190,6 @@ Global
 		{43F8E259-B2BC-44D9-BFF5-3C9F42801DB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43F8E259-B2BC-44D9-BFF5-3C9F42801DB7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{43F8E259-B2BC-44D9-BFF5-3C9F42801DB7}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{3A301A26-83E3-44E0-BA60-CF5D266A69E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3A301A26-83E3-44E0-BA60-CF5D266A69E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3A301A26-83E3-44E0-BA60-CF5D266A69E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3A301A26-83E3-44E0-BA60-CF5D266A69E3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0126A9DF-8D26-427E-ADFE-8AAAFC8CEBC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0126A9DF-8D26-427E-ADFE-8AAAFC8CEBC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0126A9DF-8D26-427E-ADFE-8AAAFC8CEBC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -216,12 +204,19 @@ Global
 		{84A66186-D819-4875-BB1C-580BDEABBCE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84A66186-D819-4875-BB1C-580BDEABBCE2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{84A66186-D819-4875-BB1C-580BDEABBCE2}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{DFF30532-C689-41D7-BA40-3597B05F6BA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFF30532-C689-41D7-BA40-3597B05F6BA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFF30532-C689-41D7-BA40-3597B05F6BA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFF30532-C689-41D7-BA40-3597B05F6BA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E147A7B-1996-4414-AFA0-DC7074E2ED2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E147A7B-1996-4414-AFA0-DC7074E2ED2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E147A7B-1996-4414-AFA0-DC7074E2ED2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E147A7B-1996-4414-AFA0-DC7074E2ED2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{757E13E6-0291-4A4C-9414-52899DB85B4D} = {A48F9748-6C61-4073-8A9B-A1BE3838D80D}
 		{55CAB931-C65A-45EB-80A9-864A12D0BCB2} = {142C341D-4DB9-4643-8EAF-21F35A3AB47F}
 		{F7CB2AE5-6652-49DA-AF15-ADE1CC8ECE41} = {5ECA20E6-D253-47F5-8471-707BA570C7B0}
 		{407CDCC4-A518-4685-8C69-329E57B53C9F} = {5ECA20E6-D253-47F5-8471-707BA570C7B0}
@@ -243,10 +238,11 @@ Global
 		{52F7CCEA-C0C2-4F4C-8655-49138CCA72C1} = {5ECA20E6-D253-47F5-8471-707BA570C7B0}
 		{D4A7464B-370B-4025-B61B-5D3CA5922632} = {5ECA20E6-D253-47F5-8471-707BA570C7B0}
 		{43F8E259-B2BC-44D9-BFF5-3C9F42801DB7} = {5ECA20E6-D253-47F5-8471-707BA570C7B0}
-		{3A301A26-83E3-44E0-BA60-CF5D266A69E3} = {A48F9748-6C61-4073-8A9B-A1BE3838D80D}
 		{0126A9DF-8D26-427E-ADFE-8AAAFC8CEBC6} = {5ECA20E6-D253-47F5-8471-707BA570C7B0}
-		{F81ABD20-4768-4BEB-81B5-712A5DC95D66} = {A48F9748-6C61-4073-8A9B-A1BE3838D80D}
+		{F81ABD20-4768-4BEB-81B5-712A5DC95D66} = {C9C26CFE-1963-44B6-9C74-10750AA43709}
 		{84A66186-D819-4875-BB1C-580BDEABBCE2} = {5ECA20E6-D253-47F5-8471-707BA570C7B0}
+		{DFF30532-C689-41D7-BA40-3597B05F6BA3} = {A48F9748-6C61-4073-8A9B-A1BE3838D80D}
+		{C9C26CFE-1963-44B6-9C74-10750AA43709} = {A48F9748-6C61-4073-8A9B-A1BE3838D80D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5197CC37-0FFC-412B-818D-2EA24F112E20}

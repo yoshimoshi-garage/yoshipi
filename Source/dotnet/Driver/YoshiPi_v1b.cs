@@ -89,7 +89,7 @@ public class YoshiPi_v1b : IYoshiPiHardware, IDisposable
                 _device.Pins.GPIO21,
                 _device.Pins.GPIO20,
                 _device.Pins.GPIO19,
-                new Frequency(2.34, Frequency.UnitType.Megahertz)),
+                new Frequency(1, Frequency.UnitType.Megahertz)),
             _device.Pins.Pin24.CreateDigitalOutputPort(true));
 
         _gpio = new GpioConnector(
@@ -200,7 +200,7 @@ public class YoshiPi_v1b : IYoshiPiHardware, IDisposable
     {
         get => _touchscreen ?? new Xpt2046(
             _device.CreateSpiBus(1,
-                new Frequency(10, Frequency.UnitType.Megahertz)),
+                new Frequency(1, Frequency.UnitType.Megahertz)),
             _device.Pins.GPIO26.CreateDigitalInterruptPort(InterruptMode.EdgeBoth, ResistorMode.Disabled),
             _mcp23008.Pins.GP7.CreateDigitalOutputPort(true),
             RotationType.Normal);
