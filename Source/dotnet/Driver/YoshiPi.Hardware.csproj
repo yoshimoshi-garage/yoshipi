@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-      <Version>0.9-beta</Version>
+      <Version>1.0</Version>
       <TargetFramework>net8.0</TargetFramework>
       <Nullable>enable</Nullable>
       <LangVersion>10</LangVersion>
@@ -15,7 +15,7 @@
       <AssemblyName>YoshiPi</AssemblyName>
       <Company>YoshiMaker</Company>
       <PackageProjectUrl>http://www.yoshimaker.com</PackageProjectUrl>
-      <PackageId>YoshiPi</PackageId>
+      <PackageId>YoshiMaker.YoshiPi</PackageId>
       <RepositoryUrl>https://github.com/yoshimoshi-garage/yoshipi</RepositoryUrl>
       <PackageTags>Raspberry Pi, Meadow, YoshiPi, ADC</PackageTags>
       <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
