@@ -2,8 +2,14 @@
 
 namespace YoshiPi;
 
+/// <summary>
+/// Represents a GPIO connector that provides access to GPIO pins through defined pin names.
+/// </summary>
 public class GpioConnector : Connector<GpioPinDefinitions>
 {
+    /// <summary>
+    /// Contains the names of the GPIO pins.
+    /// </summary>
     public static class PinNames
     {
         /// <summary>

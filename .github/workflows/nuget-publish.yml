@@ -1,6 +1,7 @@
 name: Publish NuGet Package
 
 on:
+  workflow_dispatch:
   release:
     types: [published]
     
@@ -10,12 +11,15 @@ jobs:
     timeout-minutes: 5
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
+      
     - name: Setup .NET SDK
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v4
+      
     - name: Build
-      run: dotnet build -c Release
+      run: dotnet build Source/dotnet/Driver/YoshiPi.Hardware.csproj -c Release
     - name: Pack nugets
-      run: dotnet pack -c Release --no-build --output .
+      run: dotnet pack Source/dotnet/Driver/YoshiPi.Hardware.csproj -c Release --no-build --output .
+      
     - name: Push to NuGet
       run: dotnet nuget push "*.nupkg" --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json

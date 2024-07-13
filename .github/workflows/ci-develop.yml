@@ -23,5 +23,5 @@ jobs:
         dotnet-version: 8.0.x
         
     - name: Build Meadow.Core
-      run: dotnet build -c Debug Source/YoshiPi/YoshiPi.sln
+      run: dotnet build -c Debug Source/dotnet/YoshiPi.sln
     
