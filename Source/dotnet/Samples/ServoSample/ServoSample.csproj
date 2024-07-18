@@ -9,8 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Meadow.Foundation.Grove.Servos.Servo" Version="*" />
-    <PackageReference Include="Meadow.Foundation.ICs.IOExpanders.Pca9685" Version="*" />
+    <PackageReference Include="Meadow.Foundation.Grove.Servos.Servo" Version="*-*" />
+    <PackageReference Include="Meadow.Foundation.ICs.IOExpanders.Pca9685" Version="*-*" />
   </ItemGroup>
 
   <ItemGroup>
