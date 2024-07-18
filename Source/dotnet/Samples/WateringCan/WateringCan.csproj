@@ -18,4 +18,10 @@
     <ProjectReference Include="..\..\Driver\YoshiPi.Hardware.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="app.config.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

@@ -10,6 +10,8 @@ namespace YoshiMaker.WateringCan;
 
 public class DisplayService
 {
+    public event EventHandler? CallForPumping;
+
     private IPixelDisplay _display;
     private DisplayScreen _screen;
     private Box _emptyArea;
@@ -106,6 +108,7 @@ public class DisplayService
     private void OnWaterNowClicked(object? sender, EventArgs e)
     {
         Log.Info("WATER NOW");
+        CallForPumping?.Invoke(this, EventArgs.Empty);
     }
 
     public void SetWaterLevel(int percent)
