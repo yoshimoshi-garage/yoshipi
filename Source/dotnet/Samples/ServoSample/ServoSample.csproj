@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\YoshiPi\YoshiPi.Hardware\YoshiPi.Hardware.csproj" />
+    <ProjectReference Include="..\..\Driver\YoshiPi.Hardware.csproj" />
   </ItemGroup>
 
 </Project>

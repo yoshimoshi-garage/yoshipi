@@ -136,9 +136,38 @@ ResultInactive=yes
 ResultActive=yes
 ```
 
-## Install the Remote Debugger
+## Install the `meadow` CLI tool
+
+Made sure the tools path is part of your `PATH` environment variable
 
 ```
+nano ~/.bash_profile
+```
+
+If the file is empty (or dosn't have the following) add it
+
+```
+export PATH="$PATH:$HOME/.dotnet/tools"
+```
+
+Execute the profile to add it to the current session:
+
+```
+source ~/.bash_profile
+```
+
+Now install the CLI
+
+```
+dotnet tool install WildernessLabs.Meadow.CLI --global
+```
+
+## Allow `dotnet` to adjust the system clock
+
+If your application needs to set the device clock (e.g. synchronizing from the RTC) then you must give the `dotnet` runtime permission to do so.
+
+```
+sudo setcap 'cap_sys_time=ep' $DOTNET_ROOT/dotnet
 ```
 
 ## Reboot

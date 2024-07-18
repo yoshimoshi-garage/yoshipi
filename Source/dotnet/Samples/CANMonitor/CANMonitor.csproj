@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\..\wilderness\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\ICs.CAN.Mcp2515\Driver\ICs.CAN.Mcp2515.csproj" />
-    <ProjectReference Include="..\..\YoshiPi\YoshiPi.Hardware\YoshiPi.Hardware.csproj" />
+    <ProjectReference Include="..\..\Driver\YoshiPi.Hardware.csproj" />
   </ItemGroup>
 
 </Project>

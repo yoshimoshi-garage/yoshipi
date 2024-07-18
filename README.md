@@ -32,3 +32,4 @@ Current Hardware Version: **v1b**
 ### [Write the OS to an SD Card](Docs/create-an-sd-card.md)
 ### [Boot your Pi](Docs/booting-your-pi.md)
 ### [Install Prerequsites](Docs/installing-prereqs.md)
+### [Debugging with VS Code](Docs/debugging-vscode.md)
