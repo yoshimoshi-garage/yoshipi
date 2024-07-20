@@ -17,6 +17,8 @@ public class DisplayService
     private Box _emptyArea;
     private Box _waterLevelBox;
     private Button _waterNowButton;
+    private Label _lastWaterTime;
+    private Label _lastWaterSource;
 
     public DisplayService(IPixelDisplay display, ICalibratableTouchscreen touchscreen)
     {
@@ -94,12 +96,40 @@ public class DisplayService
 
         _waterNowButton.Clicked += OnWaterNowClicked;
 
+        var lastWaterTitle = new Label(110, 120, _screen.Width - 110, 30)
+        {
+            TextColor = Color.DarkBlue,
+            Text = "Last watered:",
+            Font = font,
+            HorizontalAlignment = HorizontalAlignment.Center,
+        };
+
+
+        _lastWaterTime = new Label(110, 140, _screen.Width - 110, 30)
+        {
+            TextColor = Color.DarkBlue,
+            Text = "<unknown>",
+            Font = font,
+            HorizontalAlignment = HorizontalAlignment.Center,
+        };
+
+        _lastWaterSource = new Label(110, 160, _screen.Width - 110, 30)
+        {
+            TextColor = Color.DarkBlue,
+            Text = "",
+            Font = font,
+            HorizontalAlignment = HorizontalAlignment.Center,
+        };
+
         homeLayout.Controls.Add(
             titleLabel,
             outline,
             _emptyArea,
             _waterLevelBox,
-            _waterNowButton
+            _waterNowButton,
+            lastWaterTitle,
+            _lastWaterTime,
+            _lastWaterSource
             );
 
         _screen.Controls.Add(homeLayout);
@@ -109,10 +139,19 @@ public class DisplayService
     {
         Log.Info("WATER NOW");
         CallForPumping?.Invoke(this, EventArgs.Empty);
+
+        SetLastWater(DateTime.Now, "manual");
+    }
+
+    public void SetLastWater(DateTime time, string source)
+    {
+        _lastWaterTime.Text = $"{time:MM/dd HH:mm}";
+        _lastWaterSource.Text = source;
     }
 
     public void SetWaterLevel(int percent)
     {
+        Log.Info($"WATER LEVEL {percent}%");
         // 216
         var height = 216 * percent / 100;
         _waterLevelBox.Height = height;
