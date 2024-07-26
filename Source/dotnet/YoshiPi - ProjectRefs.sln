@@ -5,6 +5,7 @@ VisualStudioVersion = 17.9.34714.143
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{142C341D-4DB9-4643-8EAF-21F35A3AB47F}"
 	ProjectSection(SolutionItems) = preProject
+		..\..\Docs\auto-run.md = ..\..\Docs\auto-run.md
 		..\..\Docs\booting-your-pi.md = ..\..\Docs\booting-your-pi.md
 		..\..\Docs\create-an-sd-card.md = ..\..\Docs\create-an-sd-card.md
 		..\..\Docs\debugging-vscode.md = ..\..\Docs\debugging-vscode.md
