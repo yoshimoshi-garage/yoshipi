@@ -19,31 +19,37 @@ public class DisplayService
     private Button _waterNowButton;
     private Label _lastWaterTime;
     private Label _lastWaterSource;
+    private ICalibratableTouchscreen _touchscreen;
 
     public DisplayService(IPixelDisplay display, ICalibratableTouchscreen touchscreen)
     {
         _display = display;
-
+        _touchscreen = touchscreen;
         _screen = new DisplayScreen(_display, RotationType._270Degrees, touchscreen);
     }
 
     public async Task Start()
     {
-        var calfile = new FileInfo("ts.cal");
-        if (calfile.Exists) { calfile.Delete(); }
+        var calfile = new FileInfo(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "ts.cal"));
+
+        Log.Info($"Using calibration data at {calfile.FullName}");
+
+        //        if (calfile.Exists) { calfile.Delete(); }
 
         var cal = new TouchscreenCalibrationService(_screen, calfile);
 
-        await cal.Calibrate();
+        var existing = cal.GetSavedCalibrationData();
 
-        _screen.TouchScreen.TouchDown += TouchScreen_TouchDown;
+        if (existing != null)
+        {
+            _touchscreen.SetCalibrationData(existing);
+        }
+        else
+        {
+            await cal.Calibrate(true);
+        }
 
         CreateLayouts();
-    }
-
-    private void TouchScreen_TouchDown(ITouchScreen sender, TouchPoint point)
-    {
-        Log.Info($"Touch at {point}");
     }
 
     private void CreateLayouts()
@@ -152,7 +158,9 @@ public class DisplayService
     public void SetWaterLevel(int percent)
     {
         Log.Info($"WATER LEVEL {percent}%");
-        // 216
+
+        if (_waterLevelBox == null) return;
+
         var height = 216 * percent / 100;
         _waterLevelBox.Height = height;
         _waterLevelBox.Top = _emptyArea.Top + (_emptyArea.Height - height);

@@ -22,7 +22,6 @@ add_to_bashrc() {
 wget --inet4-only https://dot.net/v1/dotnet-install.sh -O - | bash /dev/stdin --version latest
 add_to_bashrc "export DOTNET_ROOT=\$HOME/.dotnet"
 add_to_bashrc "export PATH=\$PATH:\$HOME/.dotnet"
-source ~/.bashrc
 ```
 
 <ctrl-s><ctrl-x>
@@ -148,6 +147,10 @@ If the file is empty (or dosn't have the following) add it
 
 ```
 export PATH="$PATH:$HOME/.dotnet/tools"
+
+if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+fi
 ```
 
 Execute the profile to add it to the current session:

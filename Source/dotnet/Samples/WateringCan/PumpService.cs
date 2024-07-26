@@ -5,6 +5,8 @@ namespace YoshiMaker.WateringCan;
 
 public class PumpService
 {
+    public event EventHandler<(int PumpNumber, TimePeriod RunTime, string Trigger)>? PumpRun;
+
     private IRelay _pump1;
     private IRelay? _pump2;
 
@@ -20,7 +22,7 @@ public class PumpService
         }
     }
 
-    public async Task RunAllPumps(TimePeriod time)
+    public async Task RunAllPumps(TimePeriod time, string trigger)
     {
         _pump1.State = RelayState.Closed;
         if (_pump2 != null)
@@ -35,5 +37,7 @@ public class PumpService
         {
             _pump1.State = RelayState.Open;
         }
+
+        PumpRun?.Invoke(this, new(-1, time, trigger));
     }
 }

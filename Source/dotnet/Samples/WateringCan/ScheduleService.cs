@@ -3,6 +3,7 @@
 public class ScheduleService
 {
     public event EventHandler<int>? RunPumpRequested;
+    public event EventHandler? ReportTankLevel;
 
     private DateTime? _lastRun = null;
     private readonly Timer _scheduleTimer;
@@ -15,8 +16,12 @@ public class ScheduleService
         var nextHour = new DateTime(now.Year, now.Month, now.Day, now.Hour, 0, 0).AddHours(1);
         var nextCheck = (nextHour - now);
 
-        // schedule the check on the next hour
         _scheduleTimer = new Timer(ScheduleTimerProc);
+    }
+
+    public void Run()
+    {
+        // schedule the check on the next hour
         ScheduleNextCheck();
     }
 
@@ -28,6 +33,9 @@ public class ScheduleService
 
         // schedule the check on the next hour
         _scheduleTimer.Change(nextCheck, TimeSpan.FromMilliseconds(-1));
+
+        // report tank level on every check (so at startup and at every hour)
+        ReportTankLevel?.Invoke(this, EventArgs.Empty);
     }
 
     private void ScheduleTimerProc(object? o)

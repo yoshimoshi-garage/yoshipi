@@ -20,6 +20,7 @@ public class MeadowApp : YoshiPiApp
         Hardware.ComputeModule.PlatformOS.SetClock(Hardware.Rtc.GetTime().DateTime);
 
         _pumpService = new PumpService(Hardware.Relay1, null);
+        _pumpService.PumpRun += OnPumpRun;
 
         _display = new DisplayService(Hardware.Display, Hardware.Touchscreen);
         _display.CallForPumping += (s, e) => RunPump("manual");
@@ -32,24 +33,33 @@ public class MeadowApp : YoshiPiApp
 
         _scheduleService = new ScheduleService();
         _scheduleService.RunPumpRequested += (s, e) => RunPump("scheduled", e);
+        _scheduleService.ReportTankLevel += (s, e) => _cloudService?.PublishTankLevel(_levelSensor.FillLevelPercent);
 
         return Task.CompletedTask;
     }
 
-    private void RunPump(string source, int pumpNumber = -1)
+    private void OnPumpRun(object? sender, (int PumpNumber, TimePeriod RunTime, string Trigger) e)
     {
-        _display.SetLastWater(DateTime.Now, source);
-        _ = _pumpService.RunAllPumps(TimePeriod.FromSeconds(5));
+        _cloudService.LogPumpRun(e.PumpNumber, e.RunTime, e.Trigger);
+    }
+
+    private void RunPump(string trigger, int pumpNumber = -1)
+    {
+        _display.SetLastWater(DateTime.Now, trigger);
+        _ = _pumpService.RunAllPumps(TimePeriod.FromSeconds(5), trigger);
     }
 
     public override async Task Run()
     {
-        await _display.Start();
-
         Resolver.Log.Info("Starting level sensor");
         _levelSensor.StartUpdating();
 
-        //        return base.Run();
+        await _display.Start();
+        _display.SetWaterLevel(_levelSensor.FillLevelPercent);
+
+        _scheduleService.Run();
+
+        _cloudService.LogStartupEvent();
     }
 
 
