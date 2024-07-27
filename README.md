@@ -18,18 +18,9 @@ It features 4 10-bit analog inputs, 2 dry contact relays, 10 GPIO pins, a touchs
 - **Qwiic I2C Connector:** Connect effortlessly to Qwiic-enabled devices with the Qwiic I2C connector, supporting robust and flexible I2C communication.
 - **Proto-board Area:** Prototype and test custom circuits with ease using the integrated proto-board area, perfect for quick iterations and development.
 
-## Hardware
+## Documentation
 
-Current Hardware Version: **v1b**
+GitHub Wikis have a severe limitation where you can't create child pages, so we're keeping the docs directly in the source folder.
 
-- [Schematic](Hardware/v1b/Schematic_YoshiPi_v1b.pdf)
-- [Validation Checklist](Hardware/v1b/v1b-validation.md)
-- [Known Issues](Hardware/v1b/v1b-known-issues.md)
-- [Checklist for vNext](Hardware/v1c/v1c-checklist.md)
+### [Click Here for the Documentation](Docs/docs-root.md)
 
-## Getting Started
-
-### [Write the OS to an SD Card](Docs/create-an-sd-card.md)
-### [Boot your Pi](Docs/booting-your-pi.md)
-### [Install Prerequsites](Docs/installing-prereqs.md)
-### [Debugging with VS Code](Docs/debugging-vscode.md)
