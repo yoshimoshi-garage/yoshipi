@@ -30,11 +30,15 @@ public class DisplayService
 
     public async Task Start()
     {
-        var calfile = new FileInfo(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "ts.cal"));
+        await CheckTouchscreenCalibration();
+        CreateLayouts();
+    }
+
+    private async Task CheckTouchscreenCalibration()
+    {
+        var calfile = new FileInfo(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ts.cal"));
 
         Log.Info($"Using calibration data at {calfile.FullName}");
-
-        //        if (calfile.Exists) { calfile.Delete(); }
 
         var cal = new TouchscreenCalibrationService(_screen, calfile);
 
@@ -48,8 +52,6 @@ public class DisplayService
         {
             await cal.Calibrate(true);
         }
-
-        CreateLayouts();
     }
 
     private void CreateLayouts()
@@ -157,7 +159,7 @@ public class DisplayService
 
     public void SetWaterLevel(int percent)
     {
-        Log.Info($"WATER LEVEL {percent}%");
+        Log.Info($"WATER LEVEL {percent}% ({_waterLevelBox == null})");
 
         if (_waterLevelBox == null) return;
 

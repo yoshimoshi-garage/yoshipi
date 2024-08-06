@@ -27,9 +27,15 @@ public class ScheduleService
 
     private void ScheduleNextCheck()
     {
-        var now = DateTime.Now;
-        var nextHour = new DateTime(now.Year, now.Month, now.Day, now.Hour, 0, 0).AddHours(1);
-        var nextCheck = (nextHour - now);
+        TimeSpan nextCheck;
+
+        do
+        {
+            Thread.Sleep(TimeSpan.FromSeconds(5));
+            var now = DateTime.Now;
+            var nextHour = new DateTime(now.Year, now.Month, now.Day, now.Hour, 0, 0).AddHours(1);
+            nextCheck = (nextHour - now);
+        } while (nextCheck.TotalSeconds < 60);
 
         // schedule the check on the next hour
         _scheduleTimer.Change(nextCheck, TimeSpan.FromMilliseconds(-1));

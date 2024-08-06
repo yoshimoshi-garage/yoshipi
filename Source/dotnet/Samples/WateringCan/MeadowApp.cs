@@ -55,6 +55,7 @@ public class MeadowApp : YoshiPiApp
         _levelSensor.StartUpdating();
 
         await _display.Start();
+
         _display.SetWaterLevel(_levelSensor.FillLevelPercent);
 
         _scheduleService.Run();
