@@ -111,8 +111,8 @@ sudo nano /boot/firmware/config.txt
 
 Navigate to the bottom and add 
 ```
-dtoverlay=spi0-1cs,cs0_pin=44`
-dtoverlay=spi1-1cs,cs0_pin=45`
+dtoverlay=spi0-1cs,cs0_pin=44
+dtoverlay=spi1-1cs,cs0_pin=45
 ```
 
 ### Allow non-sudo` access to Network Manager
