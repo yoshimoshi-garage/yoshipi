@@ -37,6 +37,7 @@ public class YoshiPi_v1b : IYoshiPiHardware, IDisposable
     private IDigitalOutputPort _displayDcOutputPort;
     private IDigitalOutputPort _displayResetOutputPort;
     private bool _isDisposed;
+    private IDigitalOutputPort _touchChipSelectPort;
 
     /// <inheritdoc/>
     public IMeadowDevice ComputeModule => _device;
@@ -83,6 +84,9 @@ public class YoshiPi_v1b : IYoshiPiHardware, IDisposable
             interruptPort: _mcpInt,
             resetPort: _device.Pins.GPIO17.CreateDigitalOutputPort(false)
             );
+
+        // pull the touch CS high right away in the event an app isn't using the touchscreen
+        _touchChipSelectPort = _mcp23008.Pins.GP7.CreateDigitalOutputPort(true);
 
         _mcp3004 = new Mcp3004(
             _device.CreateSpiBus(
@@ -186,7 +190,7 @@ public class YoshiPi_v1b : IYoshiPiHardware, IDisposable
                     _displayResetOutputPort,
                     240, 320);
 
-            (_display as Ili9341).InvertDisplay(true);
+            (_display as Ili9341).InvertDisplayColor(true);
 
             var backlight = _mcp23008.Pins.GP4.CreateDigitalOutputPort(true);
             backlight.State = true;
@@ -202,7 +206,7 @@ public class YoshiPi_v1b : IYoshiPiHardware, IDisposable
             _device.CreateSpiBus(1,
                 new Frequency(1, Frequency.UnitType.Megahertz)),
             _device.Pins.GPIO26.CreateDigitalInterruptPort(InterruptMode.EdgeBoth, ResistorMode.Disabled),
-            _mcp23008.Pins.GP7.CreateDigitalOutputPort(true),
+            _touchChipSelectPort,
             RotationType.Normal);
     }
 
