@@ -9,6 +9,7 @@ namespace ServoSample;
 
 public class ServoService
 {
+    private float _lastCommandedPosition = 0f;
     private Pca9685 _pca;
     private IAngularServo _servo;
 
@@ -31,15 +32,13 @@ public class ServoService
         RotateTo(0f);
     }
 
-    private float _lastCommandedPosition = 0f;
-
     public void RotateTo(float value)
     {
         if (value == _lastCommandedPosition) return;
 
         var mid = 3.3 / 2d;
-        var midl = mid - 0.1;
-        var midh = mid + 0.1;
+        var midl = mid - 0.02;
+        var midh = mid + 0.02;
 
         if (value > midh)
         { // right
