@@ -15,7 +15,7 @@ public abstract class YoshiPiApp : App<RaspberryPi, YoshiPiHardwareProvider, IYo
     {
         if (InvertDisplayColors)
         {
-            (Hardware.Display as Ili9341)?.InvertDisplay(true);
+            (Hardware.Display as Ili9341)?.InvertDisplayColor(true);
         }
 
         return base.Initialize();
