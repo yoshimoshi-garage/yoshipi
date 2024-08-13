@@ -19,7 +19,7 @@ public class ScheduleService
         _scheduleTimer = new Timer(ScheduleTimerProc);
     }
 
-    public void Run()
+    public void Start()
     {
         // schedule the check on the next hour
         ScheduleNextCheck();
@@ -27,9 +27,15 @@ public class ScheduleService
 
     private void ScheduleNextCheck()
     {
-        var now = DateTime.Now;
-        var nextHour = new DateTime(now.Year, now.Month, now.Day, now.Hour, 0, 0).AddHours(1);
-        var nextCheck = (nextHour - now);
+        TimeSpan nextCheck;
+
+        do
+        {
+            Thread.Sleep(TimeSpan.FromSeconds(5));
+            var now = DateTime.Now;
+            var nextHour = new DateTime(now.Year, now.Month, now.Day, now.Hour, 0, 0).AddHours(1);
+            nextCheck = (nextHour - now);
+        } while (nextCheck.TotalSeconds < 60);
 
         // schedule the check on the next hour
         _scheduleTimer.Change(nextCheck, TimeSpan.FromMilliseconds(-1));
@@ -43,7 +49,7 @@ public class ScheduleService
         var now = DateTime.Now;
 
         // TODO: allow multiple runs/days
-        if (now.DayOfWeek == DayOfWeek.Sunday && now.Hour == 13)
+        if (now.DayOfWeek == DayOfWeek.Monday && now.Hour == 14)
         {
             RunPumpRequested?.Invoke(this, -1);
             _lastRun = now;

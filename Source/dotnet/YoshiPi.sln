@@ -28,8 +28,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YoshiPi.Hardware", "Driver\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValidationApp", "Samples\ValidationApp\ValidationApp.csproj", "{BB910C1D-2479-414E-AAFC-0EC538C72276}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrawingTests", "Samples\Benchmark\DrawingTests.csproj", "{334C5062-D50B-43A6-B32A-A6DD044CCD9D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,10 +42,6 @@ Global
 		{BB910C1D-2479-414E-AAFC-0EC538C72276}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB910C1D-2479-414E-AAFC-0EC538C72276}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB910C1D-2479-414E-AAFC-0EC538C72276}.Release|Any CPU.Build.0 = Release|Any CPU
-		{334C5062-D50B-43A6-B32A-A6DD044CCD9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{334C5062-D50B-43A6-B32A-A6DD044CCD9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{334C5062-D50B-43A6-B32A-A6DD044CCD9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{334C5062-D50B-43A6-B32A-A6DD044CCD9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,7 +49,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{55CAB931-C65A-45EB-80A9-864A12D0BCB2} = {142C341D-4DB9-4643-8EAF-21F35A3AB47F}
 		{BB910C1D-2479-414E-AAFC-0EC538C72276} = {A48F9748-6C61-4073-8A9B-A1BE3838D80D}
-		{334C5062-D50B-43A6-B32A-A6DD044CCD9D} = {A48F9748-6C61-4073-8A9B-A1BE3838D80D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5197CC37-0FFC-412B-818D-2EA24F112E20}

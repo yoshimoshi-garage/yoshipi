@@ -45,6 +45,8 @@
         <PackageReference Include="Meadow.Foundation.Sensors.Hid.Xpt2046" Version="*" />
         <PackageReference Include="Meadow.Linux" Version="*" />
     </ItemGroup>
+    -->
+    <!--
     <ItemGroup>
       <PackageReference Include="Meadow.Foundation.Displays.TftSpi" Version="*-*" />
       <PackageReference Include="Meadow.Foundation.Graphics.MicroGraphics" Version="*-*" />

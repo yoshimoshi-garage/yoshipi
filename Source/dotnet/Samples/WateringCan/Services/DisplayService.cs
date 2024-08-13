@@ -1,4 +1,5 @@
 ﻿using Meadow;
+using Meadow.Foundation.Displays;
 using Meadow.Foundation.Graphics;
 using Meadow.Foundation.Graphics.MicroLayout;
 using Meadow.Foundation.Hmi;
@@ -19,22 +20,29 @@ public class DisplayService
     private Button _waterNowButton;
     private Label _lastWaterTime;
     private Label _lastWaterSource;
+    private Label _currentTimeLabel;
     private ICalibratableTouchscreen _touchscreen;
 
     public DisplayService(IPixelDisplay display, ICalibratableTouchscreen touchscreen)
     {
         _display = display;
+        (display as Ili9341)?.InvertDisplayColor(true);
+
         _touchscreen = touchscreen;
         _screen = new DisplayScreen(_display, RotationType._270Degrees, touchscreen);
     }
 
     public async Task Start()
     {
-        var calfile = new FileInfo(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "ts.cal"));
+        await CheckTouchscreenCalibration();
+        CreateLayouts();
+    }
+
+    private async Task CheckTouchscreenCalibration()
+    {
+        var calfile = new FileInfo(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ts.cal"));
 
         Log.Info($"Using calibration data at {calfile.FullName}");
-
-        //        if (calfile.Exists) { calfile.Delete(); }
 
         var cal = new TouchscreenCalibrationService(_screen, calfile);
 
@@ -48,8 +56,6 @@ public class DisplayService
         {
             await cal.Calibrate(true);
         }
-
-        CreateLayouts();
     }
 
     private void CreateLayouts()
@@ -127,6 +133,14 @@ public class DisplayService
             HorizontalAlignment = HorizontalAlignment.Center,
         };
 
+        _currentTimeLabel = new Label(110, _screen.Height - 30, _screen.Width - 110, 30)
+        {
+            TextColor = Color.DarkBlue,
+            Text = "",
+            Font = font,
+            HorizontalAlignment = HorizontalAlignment.Center,
+        };
+
         homeLayout.Controls.Add(
             titleLabel,
             outline,
@@ -135,10 +149,16 @@ public class DisplayService
             _waterNowButton,
             lastWaterTitle,
             _lastWaterTime,
-            _lastWaterSource
+            _lastWaterSource,
+            _currentTimeLabel
             );
 
         _screen.Controls.Add(homeLayout);
+    }
+
+    public void ShowTime(DateTime time)
+    {
+        _currentTimeLabel.Text = $"{time:t}";
     }
 
     private void OnWaterNowClicked(object? sender, EventArgs e)
@@ -157,7 +177,7 @@ public class DisplayService
 
     public void SetWaterLevel(int percent)
     {
-        Log.Info($"WATER LEVEL {percent}%");
+        Log.Info($"WATER LEVEL {percent}% ({_waterLevelBox == null})");
 
         if (_waterLevelBox == null) return;
 

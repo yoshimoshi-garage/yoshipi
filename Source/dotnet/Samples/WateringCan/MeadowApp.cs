@@ -12,12 +12,11 @@ public class MeadowApp : YoshiPiApp
     private PumpService _pumpService;
     private CloudService _cloudService;
     private ScheduleService _scheduleService;
+    private TimeService _timeService;
 
     public override Task Initialize()
     {
         Resolver.Log.Info("Initialize...");
-
-        Hardware.ComputeModule.PlatformOS.SetClock(Hardware.Rtc.GetTime().DateTime);
 
         _pumpService = new PumpService(Hardware.Relay1, null);
         _pumpService.PumpRun += OnPumpRun;
@@ -30,6 +29,9 @@ public class MeadowApp : YoshiPiApp
 
         _cloudService = new CloudService();
         _cloudService.RunPumpRequested += (s, e) => RunPump("remote", e);
+
+        _timeService = new TimeService(Hardware);
+        _timeService.MinuteChanged += (s, e) => _display.ShowTime(e);
 
         _scheduleService = new ScheduleService();
         _scheduleService.RunPumpRequested += (s, e) => RunPump("scheduled", e);
@@ -55,9 +57,11 @@ public class MeadowApp : YoshiPiApp
         _levelSensor.StartUpdating();
 
         await _display.Start();
+
         _display.SetWaterLevel(_levelSensor.FillLevelPercent);
 
-        _scheduleService.Run();
+        _timeService.Start();
+        _scheduleService.Start();
 
         _cloudService.LogStartupEvent();
     }
