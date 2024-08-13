@@ -1,4 +1,5 @@
 ﻿using Meadow;
+using Meadow.Foundation.Displays;
 using Meadow.Foundation.Graphics;
 using Meadow.Foundation.Graphics.MicroLayout;
 using Meadow.Foundation.Hmi;
@@ -19,11 +20,14 @@ public class DisplayService
     private Button _waterNowButton;
     private Label _lastWaterTime;
     private Label _lastWaterSource;
+    private Label _currentTimeLabel;
     private ICalibratableTouchscreen _touchscreen;
 
     public DisplayService(IPixelDisplay display, ICalibratableTouchscreen touchscreen)
     {
         _display = display;
+        (display as Ili9341)?.InvertDisplayColor(true);
+
         _touchscreen = touchscreen;
         _screen = new DisplayScreen(_display, RotationType._270Degrees, touchscreen);
     }
@@ -129,6 +133,14 @@ public class DisplayService
             HorizontalAlignment = HorizontalAlignment.Center,
         };
 
+        _currentTimeLabel = new Label(110, _screen.Height - 30, _screen.Width - 110, 30)
+        {
+            TextColor = Color.DarkBlue,
+            Text = "",
+            Font = font,
+            HorizontalAlignment = HorizontalAlignment.Center,
+        };
+
         homeLayout.Controls.Add(
             titleLabel,
             outline,
@@ -137,10 +149,16 @@ public class DisplayService
             _waterNowButton,
             lastWaterTitle,
             _lastWaterTime,
-            _lastWaterSource
+            _lastWaterSource,
+            _currentTimeLabel
             );
 
         _screen.Controls.Add(homeLayout);
+    }
+
+    public void ShowTime(DateTime time)
+    {
+        _currentTimeLabel.Text = $"{time:t}";
     }
 
     private void OnWaterNowClicked(object? sender, EventArgs e)
