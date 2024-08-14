@@ -136,7 +136,7 @@ public class MeadowApp : YoshiPiApp
             interrupt,
             Resolver.Log);
 
-        var bus = mcp.CreateCanBus(CanBitrate.Can_250kbps);
+        var bus = mcp.CreateCanBus(CanBitrate.Can_125kbps);
 
         controller = new MainController(Hardware.Display, Hardware.Touchscreen, bus);
 

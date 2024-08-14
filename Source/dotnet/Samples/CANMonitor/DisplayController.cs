@@ -12,7 +12,9 @@ namespace ServoSample;
 
 public class DisplayController
 {
+    public event EventHandler<(int ID, byte[] Data)>? SendFrameRequested;
     public event EventHandler<bool>? FilterEnabledChanged;
+    public event EventHandler<bool>? SendRtrFrameRequested;
 
     private DisplayScreen Screen { get; }
 
@@ -20,6 +22,7 @@ public class DisplayController
     private AbsoluteLayout _rxLayout;
     private Button _filterButton;
     private bool _filtered = false;
+    private bool _rtrStandard = true;
 
     private Label[] _rxlabels = new Label[5];
 
@@ -27,8 +30,7 @@ public class DisplayController
     private int _tx2ID = 0x12345ab;
     private long _tx1FrameData = 0x1122334455667788;
     private long _tx2FrameData = 0x7766554433221100;
-
-    public event EventHandler<(int ID, byte[] Data)>? SendFrameRequested;
+    private Button _rtrButton;
 
     public DisplayController(IPixelDisplay display, ITouchScreen? touchscreen)
     {
@@ -129,6 +131,12 @@ public class DisplayController
         };
         _filterButton.Clicked += OnFilterButtonClicked;
 
+        _rtrButton = new Button(_filterButton.Right + 10, 10, 120, 50)
+        {
+            Text = "RTR STD"
+        };
+        _rtrButton.Clicked += OnRtrButtonClicked;
+
         var rowheight = 16;
 
         var rxTitle = new Label(5, 62, _rxLayout.Width - 10, rowheight)
@@ -139,7 +147,7 @@ public class DisplayController
             Text = "Receive"
         };
 
-        _rxLayout.Controls.Add(rxTitle, _filterButton);
+        _rxLayout.Controls.Add(rxTitle, _filterButton, _rtrButton);
 
         var y = rxTitle.Bottom;
 
@@ -158,6 +166,14 @@ public class DisplayController
         }
 
         Screen.Controls.Add(_txLayout, _rxLayout);
+    }
+
+    private void OnRtrButtonClicked(object? sender, EventArgs e)
+    {
+        SendRtrFrameRequested?.Invoke(this, _rtrStandard);
+        _rtrStandard = !_rtrStandard;
+
+        _rtrButton.Text = $"RTR {(_rtrStandard ? "STD" : "EXT")}";
     }
 
     private void OnFilterButtonClicked(object? sender, EventArgs e)

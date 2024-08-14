@@ -13,9 +13,12 @@ public class MainController
     {
         CanBus = bus;
 
+        CanBus.BitRate = CanBitrate.Can_250kbps;
+
         Display = new DisplayController(display, touchscreen);
         Display.SendFrameRequested += OnSendFrameRequested;
         Display.FilterEnabledChanged += OnFilterEnabledChanged;
+        Display.SendRtrFrameRequested += OnSendRtrFrameRequested;
     }
 
     private void OnFilterEnabledChanged(object? sender, bool e)
@@ -35,6 +38,38 @@ public class MainController
         CanBus.FrameReceived += OnFrameReceived;
 
         await Display.Start();
+    }
+
+    private void OnSendRtr(int id)
+    {
+        var frame = new StandardRtrFrame
+        {
+            ID = id,
+        };
+
+        CanBus.WriteFrame(frame);
+    }
+
+    private void OnSendRtrFrameRequested(object? sender, bool e)
+    {
+        RemoteTransferRequestFrame frame;
+
+        if (e)
+        {
+            frame = new StandardRtrFrame
+            {
+                ID = 0x333
+            };
+        }
+        else
+        {
+            frame = new ExtendedRtrFrame
+            {
+                ID = 0x33333
+            };
+        }
+
+        CanBus.WriteFrame(frame);
     }
 
     private void OnSendFrameRequested(object? sender, (int ID, byte[] Data) e)
