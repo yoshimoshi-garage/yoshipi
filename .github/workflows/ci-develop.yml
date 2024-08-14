@@ -62,10 +62,10 @@ jobs:
         path: Meadow.Foundation
         ref: develop
       
-    - name: Checkout
-      uses: actions/checkout@v4
+    - name: Checkout yoshipi
+      uses: actions/checkout@v3
       with:
-        fetch-depth: 0
+        path: yoshipi
 
     # Install the .NET Core workload
     - name: Install .NET Core
@@ -74,5 +74,5 @@ jobs:
         dotnet-version: 8.0.x
         
     - name: Build YoshiPi
-      run: dotnet build -c Debug Source/dotnet/YoshiPi.sln
+      run: dotnet build -c Release yoshipi/Source/dotnet/YoshiPi.sln
     
