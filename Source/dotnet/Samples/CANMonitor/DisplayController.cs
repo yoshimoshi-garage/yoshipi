@@ -12,17 +12,21 @@ namespace ServoSample;
 
 public class DisplayController
 {
+    public event EventHandler<bool>? FilterEnabledChanged;
+
     private DisplayScreen Screen { get; }
 
-    private AbsoluteLayout txLayout;
-    private AbsoluteLayout rxLayout;
+    private AbsoluteLayout _txLayout;
+    private AbsoluteLayout _rxLayout;
+    private Button _filterButton;
+    private bool _filtered = false;
 
-    private Label[] rxlabels = new Label[5];
+    private Label[] _rxlabels = new Label[5];
 
-    private int tx1ID = 0x7ff;
-    private int tx2ID = 0x12345ab;
-    private long tx1FrameData = 0x1122334455667788;
-    private long tx2FrameData = 0x7766554433221100;
+    private int _tx1ID = 0x7ff;
+    private int _tx2ID = 0x12345ab;
+    private long _tx1FrameData = 0x1122334455667788;
+    private long _tx2FrameData = 0x7766554433221100;
 
     public event EventHandler<(int ID, byte[] Data)>? SendFrameRequested;
 
@@ -51,78 +55,83 @@ public class DisplayController
     {
         var font = new Font8x12();
 
-        txLayout = new AbsoluteLayout(0, 5, Screen.Width, Screen.Height / 2)
+        _txLayout = new AbsoluteLayout(0, 5, Screen.Width, 70)
         {
             BackgroundColor = Color.DarkGray
         };
 
         var tx1IDLabel = new Label(5, 2, 70, 30)
         {
-            Text = $"{tx1ID:x}h",
+            Text = $"{_tx1ID:x}h",
             BackColor = Color.GhostWhite,
             TextColor = Color.Black,
             Font = font,
         };
         var tx1DataLabel = new Label(tx1IDLabel.Right + 2, tx1IDLabel.Top, 190, 30)
         {
-            Text = BitConverter.ToString(PayloadLongToBytes(tx1FrameData)),
+            Text = BitConverter.ToString(PayloadLongToBytes(_tx1FrameData)),
             BackColor = Color.GhostWhite,
             TextColor = Color.Black,
             Font = font,
         };
-        var tx1SendButton = new Button(txLayout.Width - 55, tx1DataLabel.Top, 50, 30)
+        var tx1SendButton = new Button(_txLayout.Width - 55, tx1DataLabel.Top, 50, 30)
         {
             Text = "send",
             Font = font,
         };
         tx1SendButton.Clicked += (s, e) =>
         {
-            var bytes = PayloadLongToBytes(tx1FrameData);
-            SendFrameRequested?.Invoke(this, (tx1ID, bytes));
+            var bytes = PayloadLongToBytes(_tx1FrameData);
+            SendFrameRequested?.Invoke(this, (_tx1ID, bytes));
 
-            tx1FrameData++;
-            bytes = PayloadLongToBytes(tx1FrameData);
+            _tx1FrameData++;
+            bytes = PayloadLongToBytes(_tx1FrameData);
             tx1DataLabel.Text = BitConverter.ToString(bytes);
         };
 
         var tx2IDLabel = new Label(5, tx1IDLabel.Bottom + 5, 70, 30)
         {
-            Text = $"{tx2ID:x}h",
+            Text = $"{_tx2ID:x}h",
             BackColor = Color.GhostWhite,
             TextColor = Color.Black,
             Font = font,
         };
         var tx2DataLabel = new Label(tx2IDLabel.Right + 2, tx2IDLabel.Top, 190, 30)
         {
-            Text = BitConverter.ToString(PayloadLongToBytes(tx2FrameData)),
+            Text = BitConverter.ToString(PayloadLongToBytes(_tx2FrameData)),
             BackColor = Color.GhostWhite,
             TextColor = Color.Black,
             Font = font,
         };
-        var tx2SendButton = new Button(txLayout.Width - 55, tx2DataLabel.Top, 50, 30)
+        var tx2SendButton = new Button(_txLayout.Width - 55, tx2DataLabel.Top, 50, 30)
         {
             Text = "send",
             Font = font,
         };
         tx2SendButton.Clicked += (s, e) =>
         {
-            var bytes = PayloadLongToBytes(tx2FrameData);
-            SendFrameRequested?.Invoke(this, (tx2ID, bytes));
-            tx2FrameData--;
-            bytes = PayloadLongToBytes(tx2FrameData);
+            var bytes = PayloadLongToBytes(_tx2FrameData);
+            SendFrameRequested?.Invoke(this, (_tx2ID, bytes));
+            _tx2FrameData--;
+            bytes = PayloadLongToBytes(_tx2FrameData);
             tx2DataLabel.Text = BitConverter.ToString(bytes);
         };
 
-        txLayout.Controls.Add(tx1IDLabel, tx1DataLabel, tx1SendButton, tx2IDLabel, tx2DataLabel, tx2SendButton);
+        _txLayout.Controls.Add(tx1IDLabel, tx1DataLabel, tx1SendButton, tx2IDLabel, tx2DataLabel, tx2SendButton);
 
-
-        rxLayout = new AbsoluteLayout(0, Screen.Height / 2, Screen.Width, Screen.Height / 2)
+        _rxLayout = new AbsoluteLayout(0, 70, Screen.Width, Screen.Height - 70)
         {
         };
 
+        _filterButton = new Button(10, 10, 120, 50)
+        {
+            Text = "Filter is OFF"
+        };
+        _filterButton.Clicked += OnFilterButtonClicked;
+
         var rowheight = 16;
 
-        var rxTitle = new Label(5, 2, rxLayout.Width - 10, rowheight)
+        var rxTitle = new Label(5, 62, _rxLayout.Width - 10, rowheight)
         {
             TextColor = Color.Black,
             Font = font,
@@ -130,13 +139,13 @@ public class DisplayController
             Text = "Receive"
         };
 
-        rxLayout.Controls.Add(rxTitle);
+        _rxLayout.Controls.Add(rxTitle, _filterButton);
 
-        var y = 20;
+        var y = rxTitle.Bottom;
 
-        for (var i = 0; i < rxlabels.Length; i++)
+        for (var i = 0; i < _rxlabels.Length; i++)
         {
-            rxlabels[i] = new Label(5, y, rxLayout.Width - 10, rowheight)
+            _rxlabels[i] = new Label(5, y, _rxLayout.Width - 10, rowheight)
             {
                 TextColor = Color.LightGreen,
                 Font = font,
@@ -145,10 +154,18 @@ public class DisplayController
 
             y += rowheight;
 
-            rxLayout.Controls.Add(rxlabels[i]);
+            _rxLayout.Controls.Add(_rxlabels[i]);
         }
 
-        Screen.Controls.Add(txLayout, rxLayout);
+        Screen.Controls.Add(_txLayout, _rxLayout);
+    }
+
+    private void OnFilterButtonClicked(object? sender, EventArgs e)
+    {
+        _filtered = !_filtered;
+
+        FilterEnabledChanged?.Invoke(this, _filtered);
+        _filterButton.Text = $"Filter is {(_filtered ? "ON" : "OFF")}";
     }
 
     private async Task CheckTouchscreenCalibration()
@@ -177,7 +194,7 @@ public class DisplayController
 
     public void DisplayReceivedFrame(DataFrame frame)
     {
-        var existing = rxlabels.FirstOrDefault(i => (i.Context as FrameInfo)?.ID == frame.ID);
+        var existing = _rxlabels.FirstOrDefault(i => (i.Context as FrameInfo)?.ID == frame.ID);
 
         if (existing == null)
         {
@@ -188,7 +205,7 @@ public class DisplayController
                 LastData = frame.Payload,
             };
 
-            var label = rxlabels.First(l => l.Context == null);
+            var label = _rxlabels.First(l => l.Context == null);
             label.Context = info;
             label.Text = info.ToString();
         }

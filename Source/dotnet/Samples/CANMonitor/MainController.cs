@@ -13,10 +13,21 @@ public class MainController
     {
         CanBus = bus;
 
-        CanBus.AcceptanceFilters.Add(CanAcceptanceFilter.CreateStandardFilter(0x7ae));
-
         Display = new DisplayController(display, touchscreen);
         Display.SendFrameRequested += OnSendFrameRequested;
+        Display.FilterEnabledChanged += OnFilterEnabledChanged;
+    }
+
+    private void OnFilterEnabledChanged(object? sender, bool e)
+    {
+        if (e)
+        {
+            CanBus.AcceptanceFilters.Add(CanAcceptanceFilter.CreateStandardFilter(0x7ff));
+        }
+        else
+        {
+            CanBus.AcceptanceFilters.Clear();
+        }
     }
 
     public async Task Run()
@@ -57,6 +68,14 @@ public class MainController
             if (df is RemoteTransferRequestFrame rtr)
             {
                 Resolver.Log.Info($"RTR: 0x{df.ID:X2}  {BitConverter.ToString(rtr.Payload)}");
+
+                // create a response frame
+                var response = new StandardDataFrame
+                {
+                    ID = rtr.ID,
+                    Payload = new byte[] { 0x00, 0x00, 0xde, 0xad, 0xbe, 0xef, 0x00, 0x00 }
+                };
+                CanBus.WriteFrame(response);
             }
             else if (df is StandardDataFrame sdf)
             {
