@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <PackageType>Template</PackageType>
+        <Version>1.0.0</Version>
+        <PackageReadmeFile>Readme.md</PackageReadmeFile>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <PackageId>YoshiMaker.YoshiPi.Template</PackageId>
+        <PackageProjectUrl>https://www.yoshimaker.com/</PackageProjectUrl>
+        <PackageIcon>icon.png</PackageIcon>
+        <Title>YoshiMaker YoshiPi Template</Title>
+        <Description>YoshiMaker YoshiPi Template</Description>
+        <PackageTags>YoshiMaker;YoshiPi;dotnet-new;templates</PackageTags>
+        <IncludeContentInPack>true</IncludeContentInPack>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <ContentTargetFolders>content</ContentTargetFolders>
+        <Authors>YoshiMaker</Authors>
+        <Company>YoshiMaker</Company>
+        <Product>YoshiPi</Product>
+        <Configurations>Release;Debug</Configurations>
+        <TargetFramework>net8.0</TargetFramework>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include=".\Readme.md" Pack="true" PackagePath="" />
+        <None Include="..\..\icon.png" Pack="true" PackagePath="" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="templates\**\*" Exclude="templates\**\bin\**;templates\**\obj\**" />
+        <Compile Remove="**\*" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Templates\YoshiPiBasic\.template.config\" />
+    </ItemGroup>
+</Project>
