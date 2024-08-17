@@ -3,7 +3,6 @@
         <OutputType>Exe</OutputType>
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
-        <AssemblyName>App</AssemblyName>
     </PropertyGroup>
     <ItemGroup>
         <None Remove="Resources\image.bmp" />
@@ -13,7 +12,6 @@
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="YoshiMaker.YoshiPi" Version="*" />
-        <PackageReference Include="Meadow.Foundation.Graphics.MicroLayout" Version="*" />
     </ItemGroup>
     <ItemGroup>
         <None Update="app.config.yaml">
