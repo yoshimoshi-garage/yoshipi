@@ -13,9 +13,12 @@ namespace Project1
         public override async Task Initialize()
         {
             Resolver.Log.Info("Initialize...");
+
+            Hardware.Display.InvertDisplayColor(true);
+
             var displayController = new DisplayController(
                 new DisplayScreen(
-                    Hardware.Display!,
+                    (IPixelDisplay)Hardware.Display!,
                     RotationType._270Degrees,
                     Hardware.Touchscreen)
             );

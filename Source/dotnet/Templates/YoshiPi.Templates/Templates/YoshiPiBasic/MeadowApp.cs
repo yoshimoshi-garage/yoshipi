@@ -12,9 +12,10 @@ public class MeadowApp : YoshiPiApp
 {
     public override async Task Initialize()
     {
-        base.Initialize();
-
         Resolver.Log.Info("Initialize...");
+
+        Hardware.Display.InvertDisplayColor(true);
+
         var displayController = new DisplayController(
             new DisplayScreen(
                 Hardware.Display!,

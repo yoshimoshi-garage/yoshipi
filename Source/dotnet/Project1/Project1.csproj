@@ -11,18 +11,17 @@
         <EmbeddedResource Include="Resources\image.bmp" />
     </ItemGroup>
 
-    <!-- Colors are correct -->
+    <!-- Colors are correct 
     <ItemGroup>
         <PackageReference Include="YoshiMaker.YoshiPi" Version="1.0" />
         <PackageReference Include="Meadow.Foundation.Graphics.MicroLayout" Version="1.12.8" />
-    </ItemGroup>
+    </ItemGroup>-->
 
-    <!-- Colors are inverted
+    <!-- Colors are inverted    -->
     <ItemGroup>
       <ProjectReference Include="..\Driver\YoshiPi.Hardware.csproj" />
     </ItemGroup>
-    -->
-    
+
     <ItemGroup>
         <None Update="app.config.yaml">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
