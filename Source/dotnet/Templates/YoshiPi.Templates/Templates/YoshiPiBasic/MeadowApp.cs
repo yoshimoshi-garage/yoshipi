@@ -12,6 +12,8 @@ public class MeadowApp : YoshiPiApp
 {
     public override async Task Initialize()
     {
+        base.Initialize();
+
         Resolver.Log.Info("Initialize...");
         var displayController = new DisplayController(
             new DisplayScreen(
