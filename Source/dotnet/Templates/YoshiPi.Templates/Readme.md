@@ -19,9 +19,9 @@ dotnet new install YoshiMaker.YoshiPi.Template
 Once installed, it will list all the project templates included:
 
 ```console
-Template Name            Short Name          Language        Tags
------------------------  ------------------  --------------  -------------------
-Meadow Core-Compute App  meadow-ccm          [C#],F#,VB.NET  Meadow/Console
+Template Name      Short Name     Language  Tags
+-----------------  -------------  --------  ---------------
+YoshiPi Basic App  yoshipi-basic  [C#]      YoshiPi/Console
 ```
 
 ## Usage
