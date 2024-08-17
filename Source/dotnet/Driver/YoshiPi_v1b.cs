@@ -189,6 +189,7 @@ public class YoshiPi_v1b : IYoshiPiHardware, IDisposable
                     _displayDcOutputPort,
                     _displayResetOutputPort,
                     240, 320);
+            ((Ili9341)_display).InvertDisplayColor(true);
 
             var backlight = _mcp23008.Pins.GP4.CreateDigitalOutputPort(true);
             backlight.State = true;
