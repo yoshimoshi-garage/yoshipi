@@ -68,8 +68,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YoshiPi.Templates", "Templates\YoshiPi.Templates\YoshiPi.Templates.csproj", "{38652C8D-9855-4A4B-9D7D-836866856E93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project1", "Project1\Project1.csproj", "{9710A254-6CC4-49B3-9AF8-9B309EF98CD8}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -386,18 +384,6 @@ Global
 		{38652C8D-9855-4A4B-9D7D-836866856E93}.Release|arm64.Build.0 = Release|arm64
 		{38652C8D-9855-4A4B-9D7D-836866856E93}.Release|x86.ActiveCfg = Release|x86
 		{38652C8D-9855-4A4B-9D7D-836866856E93}.Release|x86.Build.0 = Release|x86
-		{9710A254-6CC4-49B3-9AF8-9B309EF98CD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9710A254-6CC4-49B3-9AF8-9B309EF98CD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9710A254-6CC4-49B3-9AF8-9B309EF98CD8}.Debug|arm64.ActiveCfg = Debug|Any CPU
-		{9710A254-6CC4-49B3-9AF8-9B309EF98CD8}.Debug|arm64.Build.0 = Debug|Any CPU
-		{9710A254-6CC4-49B3-9AF8-9B309EF98CD8}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{9710A254-6CC4-49B3-9AF8-9B309EF98CD8}.Debug|x86.Build.0 = Debug|Any CPU
-		{9710A254-6CC4-49B3-9AF8-9B309EF98CD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9710A254-6CC4-49B3-9AF8-9B309EF98CD8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9710A254-6CC4-49B3-9AF8-9B309EF98CD8}.Release|arm64.ActiveCfg = Release|Any CPU
-		{9710A254-6CC4-49B3-9AF8-9B309EF98CD8}.Release|arm64.Build.0 = Release|Any CPU
-		{9710A254-6CC4-49B3-9AF8-9B309EF98CD8}.Release|x86.ActiveCfg = Release|Any CPU
-		{9710A254-6CC4-49B3-9AF8-9B309EF98CD8}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
