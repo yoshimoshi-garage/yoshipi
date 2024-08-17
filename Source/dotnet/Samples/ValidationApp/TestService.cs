@@ -3,6 +3,7 @@ using Meadow.Foundation.Graphics.MicroLayout;
 using Meadow.Foundation.Hmi;
 using Meadow.Foundation.Sensors.Light;
 using Meadow.Hardware;
+using Meadow.Peripherals.Displays;
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -87,8 +88,8 @@ public class TestService
 
         _display = new DisplayService(
             new DisplayScreen(
-                _hardware.Display,
-                Meadow.Peripherals.Displays.RotationType._270Degrees,
+                (IPixelDisplay)_hardware.Display,
+                RotationType._270Degrees,
                 _hardware.Touchscreen)
             );
 
