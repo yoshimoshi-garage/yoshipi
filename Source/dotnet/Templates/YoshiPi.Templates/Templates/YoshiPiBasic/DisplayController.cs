@@ -55,12 +55,12 @@ public class DisplayController
 
     private void CreateLayouts()
     {
-        DisplayScreen.BackgroundColor = Color.FromHex("FFFFFF");
+        displayScreen.BackgroundColor = Color.FromHex("FFFFFF");
 
         var assembly = typeof(Program).Assembly;
         var resourceName = $"{assembly.GetName().Name}.Resources.image.bmp";
         var image = Image.LoadFromResource(resourceName);
-        DisplayScreen.Controls.Add(new Picture(
+        displayScreen.Controls.Add(new Picture(
             left: 99,
             top: 18,
             width: 122,
@@ -70,7 +70,7 @@ public class DisplayController
         label = new Label(
             left: 0,
             top: 162,
-            width: DisplayScreen.Width,
+            width: displayScreen.Width,
             height: 16)
         {
             Text = "Hello, World",
@@ -79,7 +79,7 @@ public class DisplayController
             HorizontalAlignment = HorizontalAlignment.Center,
             VerticalAlignment = VerticalAlignment.Center
         };
-        DisplayScreen.Controls.Add(label);
+        displayScreen.Controls.Add(label);
 
         var button = new Button(
             left: 92,
@@ -95,7 +95,7 @@ public class DisplayController
             HighlightColor = Color.FromHex("1E2834"),
         };
         button.Clicked += ButtonClicked;
-        DisplayScreen.Controls.Add(button);
+        displayScreen.Controls.Add(button);
     }
 
     private void ButtonClicked(object sender, EventArgs e)
