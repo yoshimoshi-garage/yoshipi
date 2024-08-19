@@ -1,24 +1,59 @@
 ﻿using Meadow;
 using Meadow.Foundation.Graphics;
 using Meadow.Foundation.Graphics.MicroLayout;
+using Meadow.Foundation.Hmi;
+using Meadow.Hardware;
+using Meadow.Peripherals.Displays;
 using System;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace YoshiPiApplication.Template;
 
 public class DisplayController
 {
-    public DisplayScreen DisplayScreen { get; set; }
-
+    private IColorInvertableDisplay display;
+    private ICalibratableTouchscreen touchscreen;
+    private DisplayScreen displayScreen;
     private Label label;
 
     private int count = 0;
 
-    public DisplayController(DisplayScreen displayScreen)
+    public DisplayController(IColorInvertableDisplay display, ICalibratableTouchscreen touchscreen)
     {
-        DisplayScreen = displayScreen;
+        this.display = display;
+        this.touchscreen = touchscreen;
+
+        displayScreen = new DisplayScreen((IPixelDisplay)display, RotationType._270Degrees, touchscreen);
     }
 
-    public void LoadScreen()
+    public async Task Start()
+    {
+        await CheckTouchscreenCalibration();
+        CreateLayouts();
+    }
+
+    private async Task CheckTouchscreenCalibration()
+    {
+        var calfile = new FileInfo(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ts.cal"));
+
+        Resolver.Log.Info($"Using calibration data at {calfile.FullName}");
+
+        var cal = new TouchscreenCalibrationService(displayScreen, calfile);
+
+        var existing = cal.GetSavedCalibrationData();
+
+        if (existing != null)
+        {
+            touchscreen.SetCalibrationData(existing);
+        }
+        else
+        {
+            await cal.Calibrate(true);
+        }
+    }
+
+    private void CreateLayouts()
     {
         DisplayScreen.BackgroundColor = Color.FromHex("FFFFFF");
 
