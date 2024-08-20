@@ -1,13 +1,11 @@
 ﻿using Meadow;
-using Meadow.Foundation.Graphics;
-using Meadow.Foundation.Graphics.MicroLayout;
 using Meadow.Foundation.ICs.CAN;
 using Meadow.Hardware;
-using Meadow.Peripherals.Displays;
 using YoshiPi;
 
 namespace ServoSample;
 
+/*
 public class DisplayController
 {
     private DisplayScreen Screen { get; }
@@ -120,7 +118,7 @@ public class MainController
         }
     }
 }
-
+*/
 public class MeadowApp : YoshiPiApp
 {
     private MainController controller;
@@ -134,12 +132,13 @@ public class MeadowApp : YoshiPiApp
         var mcp = new Mcp2515(
             Hardware.MikroBus.SpiBus,
             Hardware.MikroBus.Pins.RST.CreateDigitalOutputPort(true),
-            CanBitrate.Can_250kbps,
             Mcp2515.CanOscillator.Osc_8MHz,
             interrupt,
             Resolver.Log);
 
-        controller = new MainController(Hardware.Display, mcp.CanBus);
+        var bus = mcp.CreateCanBus(CanBitrate.Can_125kbps);
+
+        controller = new MainController(Hardware.Display, Hardware.Touchscreen, bus);
 
         return Task.CompletedTask;
     }
