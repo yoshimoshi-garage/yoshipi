@@ -37,7 +37,6 @@
       <ProjectReference Include="..\..\..\..\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\Sensors.Hid.Xpt2046\Driver\Sensors.Hid.Xpt2046.csproj" />
     </ItemGroup>
     -->
-    <!--
     <ItemGroup>
         <ProjectReference Include="..\..\..\..\..\wilderness\Meadow.Core\source\implementations\linux\Meadow.Linux\Meadow.Linux.csproj" />
         <ProjectReference Include="..\..\..\..\..\wilderness\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\Displays.TftSpi\Driver\Displays.TftSpi.csproj" />
@@ -46,8 +45,7 @@
         <ProjectReference Include="..\..\..\..\..\wilderness\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\RTCs.Ds323x\Driver\RTCs.Ds323x.csproj" />
         <ProjectReference Include="..\..\..\..\..\wilderness\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\Sensors.Hid.Xpt2046\Driver\Sensors.Hid.Xpt2046.csproj" />
     </ItemGroup>
-    -->
-
+<!--
     <ItemGroup>
         <PackageReference Include="Meadow.Foundation.Displays.TftSpi" Version="*" />
         <PackageReference Include="Meadow.Foundation.ICs.ADCs.Mcp3xxx" Version="*" />
@@ -56,7 +54,7 @@
         <PackageReference Include="Meadow.Foundation.Sensors.Hid.Xpt2046" Version="*" />
         <PackageReference Include="Meadow.Linux" Version="*" />
     </ItemGroup>
-    
+    -->
     <!--
     <ItemGroup>
       <PackageReference Include="Meadow.Foundation.Displays.TftSpi" Version="*-*" />
