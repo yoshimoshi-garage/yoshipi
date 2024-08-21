@@ -1,7 +1,5 @@
 # YoshiMaker YoshiPi
 
-**At24Cxx I2C EEPROMs (AT24C32 / AT24C64 / AT24C128 / AT24C256)**
-
 The **YoshiPi** library is designed for the [YoshiMaker YoshiPi carrier board](https://www.yoshimaker.com) for the Raspberry Pi Zero 2 W.
 
 Full source code and samples are available in the [YoshiPi source repository on Github](https://github.com/yoshimoshi-garage/yoshipi).

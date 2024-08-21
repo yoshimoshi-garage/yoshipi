@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <Version>1.0</Version>
+        <Version>1.1</Version>
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <LangVersion>10</LangVersion>
@@ -46,8 +46,7 @@
         <ProjectReference Include="..\..\..\..\..\wilderness\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\RTCs.Ds323x\Driver\RTCs.Ds323x.csproj" />
         <ProjectReference Include="..\..\..\..\..\wilderness\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\Sensors.Hid.Xpt2046\Driver\Sensors.Hid.Xpt2046.csproj" />
     </ItemGroup>
-    
-    <!--
+<!--
     <ItemGroup>
         <PackageReference Include="Meadow.Foundation.Displays.TftSpi" Version="*" />
         <PackageReference Include="Meadow.Foundation.ICs.ADCs.Mcp3xxx" Version="*" />
@@ -57,7 +56,6 @@
         <PackageReference Include="Meadow.Linux" Version="*" />
     </ItemGroup>
     -->
-    
     <!--
     <ItemGroup>
       <PackageReference Include="Meadow.Foundation.Displays.TftSpi" Version="*-*" />
