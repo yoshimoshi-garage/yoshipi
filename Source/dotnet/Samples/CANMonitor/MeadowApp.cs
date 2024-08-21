@@ -1,13 +1,11 @@
 ﻿using Meadow;
-using Meadow.Foundation.Graphics;
-using Meadow.Foundation.Graphics.MicroLayout;
 using Meadow.Foundation.ICs.CAN;
 using Meadow.Hardware;
-using Meadow.Peripherals.Displays;
 using YoshiPi;
 
 namespace ServoSample;
 
+/*
 public class DisplayController
 {
     private DisplayScreen Screen { get; }
@@ -120,30 +118,39 @@ public class MainController
         }
     }
 }
-
+*/
 public class MeadowApp : YoshiPiApp
 {
     private MainController controller;
 
-    public override Task Initialize()
+    public override async Task Initialize()
     {
         Resolver.Log.Info("Initialize...");
 
         var interrupt = Hardware.MikroBus.Pins.INT.CreateDigitalInterruptPort(InterruptMode.EdgeFalling);
 
+        var rst = Hardware.MikroBus.Pins.RST.CreateDigitalOutputPort(true);
+        var cs = Hardware.MikroBus.Pins.CS.CreateDigitalOutputPort(true);
+
         var mcp = new Mcp2515(
             Hardware.MikroBus.SpiBus,
-            Hardware.MikroBus.Pins.RST.CreateDigitalOutputPort(true),
-            CanBitrate.Can_250kbps,
+            cs,
             Mcp2515.CanOscillator.Osc_8MHz,
             interrupt,
             Resolver.Log);
 
-        controller = new MainController(Hardware.Display, mcp.CanBus);
+        var bus = mcp.CreateCanBus(CanBitrate.Can_250kbps);
+        bus.BusError += OnBusError; ;
 
-        return Task.CompletedTask;
+        controller = new MainController(Hardware.Display, Hardware.Touchscreen, bus);
+
+        // return Task.CompletedTask;
     }
 
+    private void OnBusError(object? sender, CanErrorInfo e)
+    {
+        Resolver.Log.Error($"Bus error. Tx: {e.TransmitErrorCount}, Rx: {e.ReceiveErrorCount}");
+    }
 
     public override Task Run()
     {
