@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+    <ItemGroup>
+        <None Remove="Resources\image.bmp" />
+    </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Include="Resources\image.bmp" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="YoshiMaker.YoshiPi" Version="*" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Update="app.config.yaml">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+</Project>

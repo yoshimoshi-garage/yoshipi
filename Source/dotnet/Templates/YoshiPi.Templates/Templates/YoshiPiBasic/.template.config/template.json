@@ -1,0 +1,18 @@
+﻿{
+  "$schema": "http://json.schemastore.org/template",
+  "classifications": [ "YoshiPi", "Console" ],
+  "name": "YoshiPi Basic App",
+  "description": "A Meadow application that runs on a YoshiPi board",
+  "identity": "YoshiMaker.YoshiPi.CSharp.Template",
+  "groupIdentity": "YoshiMaker.YoshiPi",
+  "shortName": "yoshipi-basic",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "YoshiPiApplication.Template",
+  "preferNameDirectory": true,
+  "primaryOutputs": [
+    { "path": "YoshiPiApplication.Template.csproj" }
+  ]
+}

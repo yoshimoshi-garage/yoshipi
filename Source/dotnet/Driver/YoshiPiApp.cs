@@ -1,6 +1,4 @@
 ﻿using Meadow;
-using Meadow.Foundation.Displays;
-using System.Threading.Tasks;
 
 namespace YoshiPi;
 
@@ -9,15 +7,5 @@ namespace YoshiPi;
 /// </summary>
 public abstract class YoshiPiApp : App<RaspberryPi, YoshiPiHardwareProvider, IYoshiPiHardware>
 {
-    public virtual bool InvertDisplayColors => true;
 
-    public override Task Initialize()
-    {
-        if (InvertDisplayColors)
-        {
-            (Hardware.Display as Ili9341)?.InvertDisplayColor(true);
-        }
-
-        return base.Initialize();
-    }
 }

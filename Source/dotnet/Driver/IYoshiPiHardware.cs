@@ -64,7 +64,7 @@ public interface IYoshiPiHardware : IMeadowAppEmbeddedHardware
     /// <summary>
     /// Gets the pixel display.
     /// </summary>
-    IPixelDisplay Display { get; }
+    IColorInvertableDisplay Display { get; }
 
     /// <summary>
     /// Gets the calibratable touchscreen.
