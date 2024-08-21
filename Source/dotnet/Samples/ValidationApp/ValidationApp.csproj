@@ -5,10 +5,22 @@
         <Nullable>enable</Nullable>
         <AssemblyName>App</AssemblyName>
     </PropertyGroup>
+    
     <ItemGroup>
-      <ProjectReference Include="..\..\..\..\..\..\wilderness\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\Sensors.Light.Veml7700\Driver\Sensors.Light.Veml7700.csproj" />
+        <ProjectReference Include="..\..\..\..\..\..\wilderness\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\Sensors.Light.Veml7700\Driver\Sensors.Light.Veml7700.csproj" />
+        <ProjectReference Include="..\..\Driver\YoshiPi.Hardware.csproj" />
+    </ItemGroup>
+
+    <!--
+    <ItemGroup>
+      <PackageReference Include="Meadow.Foundation.Graphics.MicroLayout" Version="1.13.0" />
+      <PackageReference Include="Meadow.Foundation.Sensors.Light.Veml7700" Version="*" />
+    </ItemGroup>
+    <ItemGroup>
       <ProjectReference Include="..\..\Driver\YoshiPi.Hardware.csproj" />
     </ItemGroup>
+    -->
+    
     <ItemGroup>
       <None Update="app.config.yaml">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
