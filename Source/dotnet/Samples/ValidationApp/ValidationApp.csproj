@@ -6,7 +6,6 @@
         <AssemblyName>App</AssemblyName>
     </PropertyGroup>
     <ItemGroup>
-      <PackageReference Include="Meadow.Foundation.Graphics.MicroLayout" Version="*" />
       <PackageReference Include="Meadow.Foundation.Sensors.Light.Veml7700" Version="*" />
     </ItemGroup>
     <ItemGroup>

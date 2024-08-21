@@ -31,7 +31,7 @@ public class YoshiPi_v1b : IYoshiPiHardware, IDisposable
     private IButton? _button2;
     private readonly IDigitalInterruptPort? _mcpInt;
     private IRealTimeClock? _rtc;
-    private IPixelDisplay? _display;
+    private IColorInvertableDisplay? _display;
     private ICalibratableTouchscreen? _touchscreen;
     private IDigitalOutputPort _displayCsOutputPort;
     private IDigitalOutputPort _displayDcOutputPort;
@@ -178,7 +178,7 @@ public class YoshiPi_v1b : IYoshiPiHardware, IDisposable
     }
 
     /// <inheritdoc/>
-    public IPixelDisplay Display
+    public IColorInvertableDisplay Display
     {
         get
         {
