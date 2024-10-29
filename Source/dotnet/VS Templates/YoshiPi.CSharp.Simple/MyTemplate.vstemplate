@@ -1,0 +1,26 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>IoT Application (YoshiPi)</Name>
+    <Description>An IoT App targeting YoshiPi hardware</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>YoshiPiApp</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.png</Icon>
+    <PreviewImage>__PreviewImage.png</PreviewImage>
+    <TemplateGroupID>YoshiPiTemplateGroup</TemplateGroupID>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="HelloYoshiPi.csproj" File="HelloYoshiPi.csproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" TargetFileName="DisplayService.cs">DisplayService.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="MyApplication.cs">MyApplication.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="space-monkey.bmp">space-monkey.bmp</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>
