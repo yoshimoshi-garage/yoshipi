@@ -17,7 +17,7 @@ The YoshiPi and Meadow software stacks will run on Raspberry Pi 3B or later, but
 
 Use Pi Imager to write the OS.  
 
-First, make sure you have your DE card inserted and mounted in the OS and then run Raspberry Pi Imager
+First, make sure you have your SD card inserted and mounted in the OS and then run Raspberry Pi Imager
 
 ![](Assets/pi-imager-01.png)
 
