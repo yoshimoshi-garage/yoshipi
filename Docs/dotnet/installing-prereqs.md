@@ -82,24 +82,24 @@ sudo raspi-config
 
 ### Enable SPI0
 
-![](Assets/raspi-config-01.png)
-![](Assets/raspi-config-02.png)
-![](Assets/raspi-config-03.png)
-![](Assets/raspi-config-04.png)
+![](../Assets/raspi-config-01.png)
+![](../Assets/raspi-config-02.png)
+![](../Assets/raspi-config-03.png)
+![](../Assets/raspi-config-04.png)
 
 ### Enable I2C
 
-![](Assets/raspi-config-05.png)
-![](Assets/raspi-config-06.png)
-![](Assets/raspi-config-07.png)
-![](Assets/raspi-config-08.png)
+![](../Assets/raspi-config-05.png)
+![](../Assets/raspi-config-06.png)
+![](../Assets/raspi-config-07.png)
+![](../Assets/raspi-config-08.png)
 
 ### Enable Serial Port
 
-![](Assets/raspi-config-09.png)
-![](Assets/raspi-config-10.png)
-![](Assets/raspi-config-11.png)
-![](Assets/raspi-config-12.png)
+![](../Assets/raspi-config-09.png)
+![](../Assets/raspi-config-10.png)
+![](../Assets/raspi-config-11.png)
+![](../Assets/raspi-config-12.png)
 
 ### Enable SPI1
 
