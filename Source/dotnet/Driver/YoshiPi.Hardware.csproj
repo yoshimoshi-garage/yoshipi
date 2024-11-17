@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <Version>1.2</Version>
+        <Version>1.2.1</Version>
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <LangVersion>10</LangVersion>
@@ -55,6 +55,7 @@
         <PackageReference Include="Meadow.Foundation.RTCs.Ds323x" Version="*" />
         <PackageReference Include="Meadow.Foundation.Sensors.Hid.Xpt2046" Version="*" />
         <PackageReference Include="Meadow.Linux" Version="*" />
+        <PackageReference Include="System.Text.Json" Version="9.0.0" />
     </ItemGroup>
     
     <!--
