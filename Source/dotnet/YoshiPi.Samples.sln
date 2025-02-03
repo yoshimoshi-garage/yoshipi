@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35521.163
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawingTests", "Samples\DrawingTests\DrawingTests.csproj", "{BE5F159F-6A0B-4DB9-81DE-9C072E4F57EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloYoshiPi", "Samples\HelloYoshiPi\HelloYoshiPi.csproj", "{2D3C9F06-D53C-4074-90D8-C96573B7680E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServoSample", "Samples\ServoSample\ServoSample.csproj", "{025B1C48-7208-4D5C-BCEF-10A1E3471866}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WateringCan", "Samples\WateringCan\WateringCan.csproj", "{C97F9F50-5990-4EF1-A75F-8BCF56706DD4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WiFinder.YoshiPi", "Samples\WiFinder\WiFinder.YoshiPi\WiFinder.YoshiPi.csproj", "{82CC60FA-F86A-4B3D-8B10-AA3E274549BF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WiFinder", "WiFinder", "{A32D1EF3-4311-45EB-8D1B-E92F7E4BF2BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WiFinder.Core", "Samples\WiFinder\WiFinder.Core\WiFinder.Core.csproj", "{8D1EB670-980D-465F-A868-1F3C70252D3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WS2812Sample", "Samples\WS2812\WS2812Sample.csproj", "{9C01251F-CA91-439B-9078-9383AEEEEC54}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE5F159F-6A0B-4DB9-81DE-9C072E4F57EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE5F159F-6A0B-4DB9-81DE-9C072E4F57EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE5F159F-6A0B-4DB9-81DE-9C072E4F57EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE5F159F-6A0B-4DB9-81DE-9C072E4F57EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D3C9F06-D53C-4074-90D8-C96573B7680E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D3C9F06-D53C-4074-90D8-C96573B7680E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D3C9F06-D53C-4074-90D8-C96573B7680E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D3C9F06-D53C-4074-90D8-C96573B7680E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{025B1C48-7208-4D5C-BCEF-10A1E3471866}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{025B1C48-7208-4D5C-BCEF-10A1E3471866}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{025B1C48-7208-4D5C-BCEF-10A1E3471866}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{025B1C48-7208-4D5C-BCEF-10A1E3471866}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C97F9F50-5990-4EF1-A75F-8BCF56706DD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C97F9F50-5990-4EF1-A75F-8BCF56706DD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C97F9F50-5990-4EF1-A75F-8BCF56706DD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C97F9F50-5990-4EF1-A75F-8BCF56706DD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82CC60FA-F86A-4B3D-8B10-AA3E274549BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82CC60FA-F86A-4B3D-8B10-AA3E274549BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82CC60FA-F86A-4B3D-8B10-AA3E274549BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82CC60FA-F86A-4B3D-8B10-AA3E274549BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D1EB670-980D-465F-A868-1F3C70252D3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D1EB670-980D-465F-A868-1F3C70252D3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D1EB670-980D-465F-A868-1F3C70252D3F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{8D1EB670-980D-465F-A868-1F3C70252D3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D1EB670-980D-465F-A868-1F3C70252D3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D1EB670-980D-465F-A868-1F3C70252D3F}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{9C01251F-CA91-439B-9078-9383AEEEEC54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C01251F-CA91-439B-9078-9383AEEEEC54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C01251F-CA91-439B-9078-9383AEEEEC54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C01251F-CA91-439B-9078-9383AEEEEC54}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{82CC60FA-F86A-4B3D-8B10-AA3E274549BF} = {A32D1EF3-4311-45EB-8D1B-E92F7E4BF2BD}
+		{8D1EB670-980D-465F-A868-1F3C70252D3F} = {A32D1EF3-4311-45EB-8D1B-E92F7E4BF2BD}
+	EndGlobalSection
+EndGlobal

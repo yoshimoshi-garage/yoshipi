@@ -20,9 +20,7 @@
     <ItemGroup>
       <PackageReference Include="Meadow.Foundation.Graphics.MicroLayout" Version="*" />
       <PackageReference Include="SimpleJpegDecoder" Version="0.*" />
-    </ItemGroup>
-    <ItemGroup>
-      <ProjectReference Include="..\..\Driver\YoshiPi.Hardware.csproj" />
+      <PackageReference Include="YoshiMaker.YoshiPi" Version="*" />
     </ItemGroup>
     <ItemGroup>
       <None Update="app.config.yaml">

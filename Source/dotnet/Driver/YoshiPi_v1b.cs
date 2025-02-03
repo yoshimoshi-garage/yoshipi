@@ -141,7 +141,7 @@ public class YoshiPi_v1b : IYoshiPiHardware, IDisposable
                 new PinMapping.PinAlias(MikroBusConnector.PinNames.SCL, device.Pins.I2C1_SCL),
                 new PinMapping.PinAlias(MikroBusConnector.PinNames.SDA, device.Pins.I2C1_SDA),
             },
-            device.PlatformOS.GetSerialPortName("serial0")!,
+            device.PlatformOS.GetSerialPortName("ttyS0")!,
             new I2cBusMapping(device, 1),
             new SpiBusMapping(device, device.Pins.SPI1_SCLK, device.Pins.SPI1_MOSI, device.Pins.SPI1_MISO)
             );

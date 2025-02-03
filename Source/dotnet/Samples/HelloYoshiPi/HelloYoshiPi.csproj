@@ -9,7 +9,7 @@
   </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Meadow.Foundation.Graphics.MicroLayout" Version="*" />
-        <PackageReference Include="YoshiMaker.YoshiPi" Version="1.2.0" />
+        <PackageReference Include="YoshiMaker.YoshiPi" Version="*" />
     </ItemGroup>
     <ItemGroup>
       <None Update="space-monkey.bmp">

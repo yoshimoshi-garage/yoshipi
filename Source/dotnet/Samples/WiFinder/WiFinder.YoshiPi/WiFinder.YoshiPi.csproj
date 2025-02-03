@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Driver\YoshiPi.Hardware.csproj" />
+      <PackageReference Include="YoshiMaker.YoshiPi" Version="*" />
     <ProjectReference Include="..\WiFinder.Core\WiFinder.Core.csproj" />
   </ItemGroup>
 

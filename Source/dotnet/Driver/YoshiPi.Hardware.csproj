@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <Version>1.3</Version>
+        <Version>1.4</Version>
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <LangVersion>10</LangVersion>
@@ -37,6 +37,7 @@
       <ProjectReference Include="..\..\..\..\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\Sensors.Hid.Xpt2046\Driver\Sensors.Hid.Xpt2046.csproj" />
     </ItemGroup>
     -->
+    <!--
     <ItemGroup>
         <ProjectReference Include="..\..\..\..\..\wilderness\Meadow.Core\source\implementations\linux\Meadow.Linux\Meadow.Linux.csproj" />
         <ProjectReference Include="..\..\..\..\..\wilderness\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\Displays.TftSpi\Driver\Displays.TftSpi.csproj" />
@@ -45,18 +46,18 @@
         <ProjectReference Include="..\..\..\..\..\wilderness\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\RTCs.Ds323x\Driver\RTCs.Ds323x.csproj" />
         <ProjectReference Include="..\..\..\..\..\wilderness\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\Sensors.Hid.Xpt2046\Driver\Sensors.Hid.Xpt2046.csproj" />
     </ItemGroup>
-<!--
+    -->
     <ItemGroup>
-        <PackageReference Include="Meadow.Foundation.Displays.TftSpi" Version="*" />
-        <PackageReference Include="Meadow.Foundation.ICs.ADCs.Mcp3xxx" Version="*" />
-        <PackageReference Include="Meadow.Foundation.ICs.IOExpanders.Mcp23xxx" Version="*" />
-        <PackageReference Include="Meadow.Foundation.RTCs.Ds323x" Version="*" />
-        <PackageReference Include="Meadow.Foundation.Sensors.Hid.Xpt2046" Version="*" />
-        <PackageReference Include="Meadow.Linux" Version="*" />
+        <PackageReference Include="Meadow.Foundation.Displays.TftSpi" Version="2.*" />
+        <PackageReference Include="Meadow.Foundation.ICs.ADCs.Mcp3xxx" Version="2.*" />
+        <PackageReference Include="Meadow.Foundation.ICs.IOExpanders.Mcp23xxx" Version="2.*" />
+        <PackageReference Include="Meadow.Foundation.RTCs.Ds323x" Version="2.*" />
+        <PackageReference Include="Meadow.Foundation.Sensors.Hid.Xpt2046" Version="2.*" />
+        <PackageReference Include="Meadow.Linux" Version="2.*" />
         <PackageReference Include="System.Text.Json" Version="9.0.0" />
     </ItemGroup>
-    -->
-    <!--
+
+<!--
     <ItemGroup>
       <PackageReference Include="Meadow.Foundation.Displays.TftSpi" Version="*-*" />
       <PackageReference Include="Meadow.Foundation.ICs.ADCs.Mcp3xxx" Version="*-*" />

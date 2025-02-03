@@ -6,13 +6,13 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AssemblyName>App</AssemblyName>
-      <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
   </PropertyGroup>
 
   <ItemGroup>
-      <PackageReference Include="Meadow.Foundation.ICs.CAN.Mcp2515" Version="2.*" />
+    <PackageReference Include="Meadow.Foundation.Graphics.MicroLayout" Version="2.*" />
+    <PackageReference Include="Meadow.Foundation.ICs.IOExpanders.Pca9685" Version="2.*" />
+    <PackageReference Include="Meadow.Foundation.Leds.Ws2812" Version="2.*" />
       <PackageReference Include="YoshiMaker.YoshiPi" Version="*" />
-      <PackageReference Include="Meadow.Foundation.Graphics.MicroLayout" Version="2.*" />
   </ItemGroup>
 
 </Project>

@@ -7,10 +7,13 @@
     </PropertyGroup>
     
     <ItemGroup>
-        <ProjectReference Include="..\..\..\..\..\..\wilderness\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\Sensors.Light.Veml7700\Driver\Sensors.Light.Veml7700.csproj" />
         <ProjectReference Include="..\..\Driver\YoshiPi.Hardware.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+        <PackageReference Include="Meadow.Foundation.Graphics.MicroLayout" Version="*" />
+        <PackageReference Include="Meadow.Foundation.Sensors.Light.Veml7700" Version="*" />
+    </ItemGroup>
     <!--
     <ItemGroup>
       <PackageReference Include="Meadow.Foundation.Graphics.MicroLayout" Version="1.13.0" />
