@@ -9,11 +9,11 @@ public class InputService
     public event EventHandler<float>? YValueChanged;
     public event EventHandler<float>? XValueChanged;
 
-    private IDigitalInterruptPort _buttonPort;
-    private IAnalogInputPort _xInput;
-    private IAnalogInputPort _yInput;
+    private readonly IDigitalInterruptPort _buttonPort;
+    private readonly IObservableAnalogInputPort _xInput;
+    private readonly IObservableAnalogInputPort _yInput;
 
-    public InputService(IDigitalInterruptPort buttonPort, IAnalogInputPort xInput, IAnalogInputPort yInput)
+    public InputService(IDigitalInterruptPort buttonPort, IObservableAnalogInputPort xInput, IObservableAnalogInputPort yInput)
     {
         _buttonPort = buttonPort;
         _xInput = xInput;

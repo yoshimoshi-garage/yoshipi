@@ -6,8 +6,8 @@ namespace ServoSample;
 
 public class DisplayService
 {
-    private IPixelDisplay _display;
-    private DisplayScreen _screen;
+    private readonly IPixelDisplay _display;
+    private readonly DisplayScreen _screen;
     private Box _upBox;
     private Box _downBox;
     private Box _leftBox;
@@ -41,7 +41,7 @@ public class DisplayService
             uiWidth)
         {
             IsFilled = false,
-            ForeColor = Color.Cyan
+            ForegroundColor = Color.Cyan
         };
 
         _upBox = new Box(
@@ -51,7 +51,7 @@ public class DisplayService
             (int)(uiWidth * 1.5))
         {
             IsFilled = false,
-            ForeColor = Color.Cyan
+            ForegroundColor = Color.Cyan
         };
 
         _downBox = new Box(
@@ -61,7 +61,7 @@ public class DisplayService
             (int)(uiWidth * 1.5))
         {
             IsFilled = false,
-            ForeColor = Color.Cyan
+            ForegroundColor = Color.Cyan
         };
 
         _leftBox = new Box(
@@ -71,7 +71,7 @@ public class DisplayService
             uiWidth)
         {
             IsFilled = false,
-            ForeColor = Color.Cyan
+            ForegroundColor = Color.Cyan
         };
 
         _rightBox = new Box(
@@ -81,7 +81,7 @@ public class DisplayService
             uiWidth)
         {
             IsFilled = true,
-            ForeColor = Color.Cyan
+            ForegroundColor = Color.Cyan
         };
 
         _screen.Controls.Add(_centerBox, _upBox, _downBox, _leftBox, _rightBox);
@@ -107,20 +107,20 @@ public class DisplayService
         { // right
             var magnitude = (float)((xValue - mid) / (2 * mid));
             var color = Color.FromHsba(180, 1, magnitude);
-            _rightBox.ForeColor = color;
+            _rightBox.ForegroundColor = color;
             _rightBox.IsFilled = true;
         }
         else if (xValue < midl)
         { // left
             var magnitude = (float)((mid - xValue) / (2 * mid));
             var color = Color.FromHsba(180, 1, magnitude);
-            _leftBox.ForeColor = color;
+            _leftBox.ForegroundColor = color;
             _leftBox.IsFilled = true;
         }
         else
         {
-            _leftBox.ForeColor = Color.Cyan;
-            _rightBox.ForeColor = Color.Cyan;
+            _leftBox.ForegroundColor = Color.Cyan;
+            _rightBox.ForegroundColor = Color.Cyan;
         }
 
         _screen.EndUpdate();
@@ -141,20 +141,20 @@ public class DisplayService
         { // up
             var magnitude = (float)((yValue - mid) / (2 * mid));
             var color = Color.FromHsba(180, 1, magnitude);
-            _upBox.ForeColor = color;
+            _upBox.ForegroundColor = color;
             _upBox.IsFilled = true;
         }
         else if (yValue < midl)
         { // down
             var magnitude = (float)((mid - yValue) / (2 * mid));
             var color = Color.FromHsba(180, 1, magnitude);
-            _downBox.ForeColor = color;
+            _downBox.ForegroundColor = color;
             _downBox.IsFilled = true;
         }
         else
         {
-            _upBox.ForeColor = Color.Cyan;
-            _downBox.ForeColor = Color.Cyan;
+            _upBox.ForegroundColor = Color.Cyan;
+            _downBox.ForegroundColor = Color.Cyan;
         }
 
         _screen.EndUpdate();

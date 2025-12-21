@@ -1,5 +1,6 @@
 ﻿using Meadow;
 using Meadow.Foundation.Displays;
+using Meadow.Foundation.ICs.ADC;
 using Meadow.Foundation.ICs.IOExpanders;
 using Meadow.Foundation.Relays;
 using Meadow.Foundation.RTCs;
@@ -32,12 +33,12 @@ public class YoshiPi_v1b : IYoshiPiHardware, IDisposable
     private readonly IDigitalInterruptPort? _mcpInt;
     private IRealTimeClock? _rtc;
     private IColorInvertableDisplay? _display;
-    private ICalibratableTouchscreen? _touchscreen;
-    private IDigitalOutputPort _displayCsOutputPort;
-    private IDigitalOutputPort _displayDcOutputPort;
-    private IDigitalOutputPort _displayResetOutputPort;
+    private readonly ICalibratableTouchscreen? _touchscreen;
+    private readonly IDigitalOutputPort _displayCsOutputPort;
+    private readonly IDigitalOutputPort _displayDcOutputPort;
+    private readonly IDigitalOutputPort _displayResetOutputPort;
     private bool _isDisposed;
-    private IDigitalOutputPort _touchChipSelectPort;
+    private readonly IDigitalOutputPort _touchChipSelectPort;
 
     /// <inheritdoc/>
     public IMeadowDevice ComputeModule => _device;

@@ -10,8 +10,8 @@ internal class NetworkListLayout : AbsoluteLayout
     protected IFont MediumFont { get; }
     protected IFont LargeFont { get; }
 
-    private Label titleLabel;
-    private Label antennaLabel;
+    private readonly Label titleLabel;
+    private readonly Label antennaLabel;
     private bool antennaSelected;
 
     public ListBox NetworkList { get; private set; }
@@ -74,11 +74,11 @@ internal class NetworkListLayout : AbsoluteLayout
 
             if (AntennaSelected)
             {
-                antennaLabel.BackColor = Color.Red;
+                antennaLabel.BackgroundColor = Color.Red;
             }
             else
             {
-                antennaLabel.BackColor = Color.Transparent;
+                antennaLabel.BackgroundColor = Color.Transparent;
             }
         }
     }

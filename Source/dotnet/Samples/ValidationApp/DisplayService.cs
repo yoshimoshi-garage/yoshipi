@@ -78,7 +78,7 @@ public class DisplayService
             Font = buttonFont,
             Text = "YES",
             HighlightColor = Color.White,
-            ForeColor = Color.LightGray,
+            ForegroundColor = Color.LightGray,
             PressedColor = Color.DarkGray
         };
         _yesButton.Clicked += (s, e) => { ResultClicked?.Invoke(null, TestResult.Pass); };
@@ -92,7 +92,7 @@ public class DisplayService
             Font = buttonFont,
             Text = "Skip",
             HighlightColor = Color.White,
-            ForeColor = Color.LightGray,
+            ForegroundColor = Color.LightGray,
             PressedColor = Color.DarkGray
         };
         _skipButton.Clicked += (s, e) => { ResultClicked?.Invoke(null, TestResult.Skip); };
@@ -106,7 +106,7 @@ public class DisplayService
             Font = buttonFont,
             Text = "No",
             HighlightColor = Color.White,
-            ForeColor = Color.LightGray,
+            ForegroundColor = Color.LightGray,
             PressedColor = Color.DarkGray
         };
         _noButton.Clicked += (s, e) => { ResultClicked?.Invoke(null, TestResult.Fail); };

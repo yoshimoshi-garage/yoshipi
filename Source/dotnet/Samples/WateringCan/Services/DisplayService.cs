@@ -13,15 +13,15 @@ public class DisplayService
 {
     public event EventHandler? CallForPumping;
 
-    private IPixelDisplay _display;
-    private DisplayScreen _screen;
+    private readonly IPixelDisplay _display;
+    private readonly DisplayScreen _screen;
     private Box _emptyArea;
     private Box _waterLevelBox;
     private Button _waterNowButton;
     private Label _lastWaterTime;
     private Label _lastWaterSource;
     private Label _currentTimeLabel;
-    private ICalibratableTouchscreen _touchscreen;
+    private readonly ICalibratableTouchscreen _touchscreen;
 
     public DisplayService(IPixelDisplay display, ICalibratableTouchscreen touchscreen)
     {
@@ -79,26 +79,26 @@ public class DisplayService
         var outline = new Box(10, 10, 100, 220)
         {
             IsFilled = true,
-            ForeColor = Color.WhiteSmoke
+            ForegroundColor = Color.WhiteSmoke
         };
 
         _emptyArea = new Box(12, 12, 96, 216)
         {
             IsFilled = true,
-            ForeColor = Color.Black
+            ForegroundColor = Color.Black
         };
 
         _waterLevelBox = new Box(12, 12, 96, 216)
         {
             IsFilled = true,
-            ForeColor = Color.Blue
+            ForegroundColor = Color.Blue
         };
 
         var actionArealeft = 125;
 
         _waterNowButton = new Button(actionArealeft + 15, 50, 150, 50)
         {
-            ForeColor = Color.Blue,
+            ForegroundColor = Color.Blue,
             PressedColor = Color.DarkBlue,
             HighlightColor = Color.LightBlue,
             TextColor = Color.WhiteSmoke,
